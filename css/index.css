@@ -1,0 +1,39 @@
+.articles-container {
+  line-height: 1.6em;
+}
+
+.articles-container article {
+  margin-bottom: 1em;
+  padding: 1em 0;
+  border-bottom: 1px solid #EEE;
+}
+
+.articles-container article header a {
+  margin-bottom: 0.2em;
+  color: black;
+  font-size: 2em;
+  font-weight: bold;
+  line-height: 1.2em;
+  display: inline-block;
+}
+
+.articles-container article header a:hover {
+  text-decoration: underline;
+}
+
+.articles-container .tags {
+  font-size: 0.9em;
+}
+
+.articles-container article .text {
+  font: 1.1em Georgia, "Cambria", serif;
+}
+
+.featured-tags .tag {
+  height: 1.5em;
+  margin: 0 0.5em 0.6em 0.1em;
+  border: 1px solid #BBB;
+  padding: 0 0.7em;
+  color: #BBB;
+  display: inline-block;
+}

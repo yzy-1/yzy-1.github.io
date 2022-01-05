@@ -438,17 +438,17 @@ $\large\textbf{\textsf{题目} / Problems}$
 
 $$
 \def\arraystretch{1.2}
-\def\jx{\textsf{囧仙}}
+\def\ceshi{\textsf{测试}}
 \small
 \begin{array}{|c|c|c|c|c|c|c|}\hline
 \textbf{Div.2} & \textbf{Div.1} & \textbf{\textsf{中文名称}} & \textbf{\textsf{英文名称}} & \textbf{Idea} & \textbf{Data} & \textbf{Check} \\\hline
-{\color{#F00}\text A} & & \textsf{测试} & \texttt{test} & \jx & \jx & \jx \\\hline
-{\color{#F20}\text B} & & \textsf{测试} & \texttt{test} & \jx & \jx & \jx \\ \hline
-{\color{#F40}\text C} & {\color{#F40}\text A} & \textsf{测试} & \texttt{test} & \jx & \jx & \jx \\\hline
-{\color{#F60}\text D} & {\color{#F60}\text B} & \textsf{测试} & \texttt{test} & \jx & \jx & \jx \\\hline
-& {\color{#F80}\text C} & \textsf{测试} & \texttt{test} & \jx & \jx & \jx \\\hline
-& {\color{#FA0}\text D} & \text{测试} & \texttt{test} & \jx & \jx & \jx \\\hline
-{\color{gray}\text{Extra}} & {\color{gray}\text{Extra}} & \text{测试} & \texttt{test} & \jx & \jx & \jx \\\hline
+{\color{#F00}\text A} & & \textsf{测试} & \texttt{test} & \ceshi & \ceshi & \ceshi \\\hline
+{\color{#F20}\text B} & & \textsf{测试} & \texttt{test} & \ceshi & \ceshi & \ceshi \\ \hline
+{\color{#F40}\text C} & {\color{#F40}\text A} & \textsf{测试} & \texttt{test} & \ceshi & \ceshi & \ceshi \\\hline
+{\color{#F60}\text D} & {\color{#F60}\text B} & \textsf{测试} & \texttt{test} & \ceshi & \ceshi & \ceshi \\\hline
+& {\color{#F80}\text C} & \textsf{测试} & \texttt{test} & \ceshi & \ceshi & \ceshi \\\hline
+& {\color{#FA0}\text D} & \text{测试} & \texttt{test} & \ceshi & \ceshi & \ceshi \\\hline
+{\color{gray}\text{Extra}} & {\color{gray}\text{Extra}} & \text{测试} & \texttt{test} & \ceshi & \ceshi & \ceshi \\\hline
 \end{array}
 $$
 
@@ -470,3 +470,10 @@ $\large\textbf{\textsf{鸣谢} / Thank}$
 <li>a</li>
 <li>a</li>
 </ul>
+
+```javascript
+$(a).b(); // 用美元符号 $ 不会挂！
+$(a).b();
+$(a).b();
+$(a).b();
+```

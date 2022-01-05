@@ -14,9 +14,9 @@
 <section class="content">
   <% Object.entries(posts).sort((x, y) => x[1].conf.tags.indexOf("pinned") < 0 !==
   y[1].conf.tags.indexOf("pinned") < 0 ? x[1].conf.tags.indexOf("pinned") < 0 : x[1].conf.uptime -
-  y[1].conf.uptime).forEach(([postName, post]) => { %>
+  y[1].conf.uptime).forEach(([postId, post]) => { %>
   <article>
-    <header><%= `<a href="/post/${postName}.html">${post.conf.title}</a>` %></header>
+    <header><%= `<a href="/post/${postId}.html">${post.conf.title}</a>` %></header>
     <div class="tags">
       <% post.conf.tags.forEach(tag => { %>
       <a href="##" class="tag"><%= tag %></a>

@@ -19,7 +19,7 @@ import MiniCssExtractPlugin from "mini-css-extract-plugin";
 const __dirname = path.resolve();
 
 // 获取 src/posts 下的所有 .md 文件
-const posts = glob
+const posts: { conf?: any; md?: string; html?: string } = glob
   .sync(path.resolve(__dirname, "src/posts/*.md"))
   .map((x) => path.basename(x, ".md"))
   .reduce((posts, key) => {
@@ -68,7 +68,7 @@ function Plugins() {
       filename: "css/[name].[contenthash:7].css",
     }),
     new HtmlWebpackPlugin({
-      title: "Index",
+      title: "yzy1's blog",
       filename: "index.html",
       template: path.resolve(__dirname, "src/index.ejs"),
       chunks: ["index"],
@@ -81,14 +81,14 @@ function Plugins() {
       chunks: ["about"],
     }),
   ].concat(
-    Object.keys(posts).map(
-      (x) =>
+    Object.entries(posts).map(
+      ([postId, post]) =>
         new HtmlWebpackPlugin({
-          title: x,
-          filename: `post/${x}.html`,
+          title: post.conf.title,
+          filename: `post/${postId}.html`,
           template: path.resolve(__dirname, "src/post.ejs"),
-          chunks: [x],
-          templateParameters: { post: posts[x] },
+          chunks: [postId],
+          templateParameters: { post: posts[postId] },
         }),
     ),
   );

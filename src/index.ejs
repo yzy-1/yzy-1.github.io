@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title><%= htmlWebpackPlugin.options.title%></title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/purecss@2.0.6/build/pure-min.css"
+      integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/grids-responsive-min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/katex@0.15.1/dist/katex.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/highlight.js@11.3.1/styles/atom-one-light.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/github-markdown-css@5.1.0/github-markdown-light.css"
+    />
+    <script src="https://unpkg.com/jquery@3.6.0/dist/jquery.min.js"></script>
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="#">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
+    <div id="wrap">
+      <%= require("/sidebar.ejs")({}) %>
+      <div id="main">
+        <section class="splash-container">
+          <div class="splash">
+            <h1 class="splash-head">yzy1's blog</h1>
+            <p class="splash-subhead">hello, world</p>
+          </div>
+        </section>
+        <section class="content">
+          <article class="pinned">
+            <header><a>Lorem ipsum dolor sit amet</a></header>
+            <div class="tags">
+              <a href="##" class="tag tag-red">Lorem</a>
+              <a href="##" class="tag tag-green">Ipsum</a>
+            </div>
+            <section class="text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur cum temporibus
+              eveniet quaerat voluptatem ipsum sit cupiditate dolorum, similique nostrum repudiandae
+              vero incidunt ipsam labore numquam voluptate amet soluta.
+            </section>
+          </article>
+          <article>
+            <header><a>Lorem ipsum dolor sit amet</a></header>
+            <div class="tags">
+              <a href="##" class="tag">Lorem</a>
+              <a href="##" class="tag">Ipsum</a>
+            </div>
+            <section class="text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur cum temporibus
+              eveniet quaerat voluptatem ipsum sit cupiditate dolorum, similique nostrum repudiandae
+              vero incidunt ipsam labore numquam voluptate amet soluta.
+            </section>
+          </article>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>

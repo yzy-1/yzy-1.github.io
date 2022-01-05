@@ -1,0 +1,73 @@
+.splash-container {
+  margin: 0;
+  background: #1f8dd6;
+  font-size: 1.2em;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.splash {
+  width: 80%;
+  height: 50%;
+  margin: 5em auto;
+  text-align: center;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+.splash-head {
+  border: 3px solid white;
+  border-radius: 5px;
+  padding: 1em;
+  color: white;
+  font-size: 2em;
+  font-weight: bold;
+  line-height: 1.6em;
+}
+
+.splash-subhead {
+  color: white;
+  letter-spacing: 0.05em;
+  opacity: 0.8;
+}
+
+.content {
+  line-height: 1.6em;
+}
+
+.content article {
+  margin-bottom: 1em;
+  padding: 1em 0;
+  border-bottom: 1px solid #eee;
+}
+
+.content article header a {
+  margin-bottom: 0.2em;
+  color: black;
+  font-size: 2em;
+  font-weight: bold;
+  line-height: 1.2em;
+  display: inline-block;
+}
+
+.content article header a:hover {
+  text-decoration: underline;
+}
+
+.content .tags {
+  font-size: 0.9em;
+}
+
+.content .tag {
+  border: 1px solid #777;
+  border-radius: 999em;
+  margin: 0 0.5em 0.6em 0.1em;
+  padding: 0 0.7em;
+  color: #777;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.content article .text {
+  font: 1.1em Georgia, "Cambria", serif;
+}

@@ -1,4 +1,4 @@
-import Webpack from "webpack";
+import webpack from "webpack";
 import "webpack-dev-server";
 import path from "path";
 import glob from "glob";
@@ -47,7 +47,7 @@ const posts = glob
   }, {});
 
 function Entry() {
-  let entry: any = {};
+  let entry: webpack.EntryObject = {};
   entry.index = path.resolve(__dirname, "src/ts/index.ts");
   entry.about = path.resolve(__dirname, "src/ts/about.ts");
   entry = Object.keys(posts).reduce((obj, x) => {
@@ -60,19 +60,22 @@ function Entry() {
 function Plugins() {
   return [
     new CleanWebpackPlugin(),
+    new webpack.ProvidePlugin({
+      _: "underscore",
+    }),
     new MiniCssExtractPlugin({
       filename: "css/[name].[contenthash:7].css",
     }),
     new HtmlWebpackPlugin({
       title: "Index",
       filename: "index.html",
-      template: path.resolve(__dirname, "src/index.tpl.html"),
+      template: path.resolve(__dirname, "src/index.ejs"),
       chunks: ["index"],
     }),
     new HtmlWebpackPlugin({
       title: "About",
       filename: "about.html",
-      template: path.resolve(__dirname, "src/about.tpl.html"),
+      template: path.resolve(__dirname, "src/about.ejs"),
       chunks: ["about"],
     }),
   ].concat(
@@ -81,7 +84,7 @@ function Plugins() {
         new HtmlWebpackPlugin({
           title: x,
           filename: "posts/" + x + ".html",
-          template: path.resolve(__dirname, "src/post.tpl.html"),
+          template: path.resolve(__dirname, "src/post.ejs"),
           chunks: [x],
           templateParameters: { post: posts[x] },
         }),
@@ -89,7 +92,7 @@ function Plugins() {
   );
 }
 
-const config: Webpack.Configuration = {
+const config: webpack.Configuration = {
   mode: "development",
   performance: { hints: false },
   entry: Entry(),
@@ -132,6 +135,13 @@ const config: Webpack.Configuration = {
           },
         ],
       },
+      {
+        test: /\.ejs$/,
+        loader: "ejs-loader",
+        options: {
+          esModule: false,
+        },
+      },
     ],
   },
   resolve: {
@@ -143,6 +153,9 @@ const config: Webpack.Configuration = {
     devMiddleware: {
       index: "index.html",
     },
+  },
+  externals: {
+    jquery: "jQuery",
   },
 };
 

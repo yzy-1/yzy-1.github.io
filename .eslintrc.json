@@ -1,5 +1,8 @@
 {
   "plugins": ["html"],
+  "settings": {
+    "html/html-extensions": [".html", ".ejs"]
+  },
   "env": {
     "browser": true,
     "es6": true,

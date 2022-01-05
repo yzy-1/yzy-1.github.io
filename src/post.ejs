@@ -18,11 +18,11 @@
     />
     <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/grids-responsive-min.css" />
     <link rel="stylesheet" href="https://unpkg.com/katex@0.15.1/dist/katex.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/highlight.js@11.3.1/styles/atom-one-light.css" />
     <link
       rel="stylesheet"
       href="https://unpkg.com/github-markdown-css@5.1.0/github-markdown-light.css"
     />
-    <link rel="stylesheet" href="https://unpkg.com/highlight.js@11.3.1/styles/atom-one-light.css" />
     <script src="https://unpkg.com/jquery@3.6.0/dist/jquery.min.js"></script>
   </head>
   <body>
@@ -32,7 +32,16 @@
         <a href="#">upgrade your browser</a> to improve your experience.
       </p>
     <![endif]-->
-    <h1><%= post.conf.title%></h1>
-    <article class="markdown-body"><%= post.html%></article>
+    <div id="wrap">
+      <%= require("/sidebar.ejs")({}) %>
+      <div id="main">
+        <header>
+          <h1><%= post.title %></h1>
+        </header>
+        <div class="content">
+          <div class="markdown-body"><%= post.html %></div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

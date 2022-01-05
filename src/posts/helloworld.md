@@ -1,6 +1,6 @@
 {
   "title": "Hello world",
-  "tags": ["test"]
+  "tags": ["Test"]
 }
 
 ---

@@ -1,6 +1,6 @@
 {
-  "title": "Test",
-  "tags": ["test"]
+  "title": "Test 测试博客",
+  "tags": ["Test"]
 }
 
 ---

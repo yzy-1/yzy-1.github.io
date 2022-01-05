@@ -1,1 +1,1 @@
-console.log("about");
+import "/css/global.css";

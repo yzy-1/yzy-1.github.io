@@ -19,7 +19,9 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta eius quod nesciun
 2. world
 3. hello world
 
-$$(a+b)^2=a^2+b^2+2ab$$
+$$
+(a+b)^2=a^2+b^2+2ab
+$$
 
 ```python
 print("hello world")

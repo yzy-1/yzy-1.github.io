@@ -6,7 +6,7 @@
   </div>
 </section>
 <section class="content">
-  <% for (const [postName, post] of Object.entries(posts)) { %>
+  <% Object.entries(posts).sort((x, y) => x[1].conf.uptime - y[1].conf.uptime).forEach(([postName, post]) => { %>
     <% if (post.conf.tags.indexOf("pinned") >= 0) { %>
       <article class="pinned">
     <% } else { %>
@@ -22,6 +22,6 @@
       <%- post.md.slice(0, 256) %> 
     </div>
     </article>
-  <% } %>
+  <% }) %>
 </section>
 <%= require("/footer.ejs")({}) %>

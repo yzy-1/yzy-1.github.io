@@ -28,7 +28,8 @@ const posts = glob
       .toString();
     // 按照 --- 将 .md 分割成 json 和 markdown 两部分
     const separator = "---\n";
-    const [conf, ...splittedMd] = data.split("---\n");
+    const [rawConf, ...splittedMd] = data.split("---\n");
+    const conf = JSON.parse(rawConf);
     const md = splittedMd.join(separator);
     // 根据 markdown 生成 html
     // 使用 KaTeX 渲染数学公式
@@ -42,7 +43,7 @@ const posts = glob
       .use(rehypeKatex, { trust: true, strict: "ignore" })
       .use(rehypeStringify, { closeSelfClosing: true })
       .processSync(md);
-    posts[key] = { conf: JSON.parse(conf), md: md, html: html };
+    posts[key] = { conf: conf, md: md, html: html };
     return posts;
   }, {});
 

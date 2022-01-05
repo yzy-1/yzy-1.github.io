@@ -6,29 +6,22 @@
   </div>
 </section>
 <section class="content">
-  <article class="pinned">
-    <header><a>Lorem ipsum dolor sit amet</a></header>
+  <% for (const [postName, post] of Object.entries(posts)) { %>
+    <% if (post.conf.tags.indexOf("pinned") >= 0) { %>
+      <article class="pinned">
+    <% } else { %>
+      <article>
+    <% } %>
+    <header><a href=<%= '"/post/' + postName + '.html"' %>><%= post.conf.title %></a></header>
     <div class="tags">
-      <a href="##" class="tag tag-red">Lorem</a>
-      <a href="##" class="tag tag-green">Ipsum</a>
+      <% post.conf.tags.forEach(tag => { %>
+        <a href="##" class="tag"><%= tag %></a>
+      <% }) %>
     </div>
-    <section class="text">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur cum temporibus eveniet
-      quaerat voluptatem ipsum sit cupiditate dolorum, similique nostrum repudiandae vero incidunt
-      ipsam labore numquam voluptate amet soluta.
-    </section>
-  </article>
-  <article>
-    <header><a>Lorem ipsum dolor sit amet</a></header>
-    <div class="tags">
-      <a href="##" class="tag">Lorem</a>
-      <a href="##" class="tag">Ipsum</a>
+    <div class="text">
+      <%- post.md.slice(0, 256) %> 
     </div>
-    <section class="text">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur cum temporibus eveniet
-      quaerat voluptatem ipsum sit cupiditate dolorum, similique nostrum repudiandae vero incidunt
-      ipsam labore numquam voluptate amet soluta.
-    </section>
-  </article>
+    </article>
+  <% } %>
 </section>
 <%= require("/footer.ejs")({}) %>

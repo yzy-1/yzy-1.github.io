@@ -7,6 +7,15 @@ body {
   color: inherit;
 }
 
+a {
+  text-decoration: none;
+  color: #0085a1;
+}
+
+a:hover {
+  color: #2d3e50;
+}
+
 .markdown-body li + li {
   margin-top: 0;
 }

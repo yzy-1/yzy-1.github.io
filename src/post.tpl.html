@@ -18,6 +18,11 @@
     />
     <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/grids-responsive-min.css" />
     <link rel="stylesheet" href="https://unpkg.com/katex@0.15.1/dist/katex.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/github-markdown-css@5.1.0/github-markdown-light.css"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/highlight.js@11.3.1/styles/atom-one-light.css" />
     <script src="https://unpkg.com/jquery@3.6.0/dist/jquery.min.js"></script>
   </head>
   <body>
@@ -28,6 +33,6 @@
       </p>
     <![endif]-->
     <h1><%= post.conf.title%></h1>
-    <div><%= post.html%></div>
+    <article class="markdown-body"><%= post.html%></article>
   </body>
 </html>

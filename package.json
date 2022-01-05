@@ -24,6 +24,7 @@
     "html-webpack-plugin": "^5.5.0",
     "jquery": "^3.6.0",
     "mini-css-extract-plugin": "^2.4.5",
+    "rehype-highlight": "^5.0.2",
     "rehype-katex": "^6.0.2",
     "rehype-raw": "^6.1.1",
     "rehype-stringify": "^9.0.2",

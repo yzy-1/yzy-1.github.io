@@ -9,6 +9,7 @@ import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import remarkRehype from "remark-rehype";
 import rehypeRaw from "rehype-raw";
+import rehypeHighlight from "rehype-highlight";
 import rehypeKatex from "rehype-katex";
 import rehypeStringify from "rehype-stringify";
 import { CleanWebpackPlugin } from "clean-webpack-plugin";
@@ -37,6 +38,7 @@ const posts = glob
       .use(remarkMath)
       .use(remarkRehype, { allowDangerousHtml: true })
       .use(rehypeRaw)
+      .use(rehypeHighlight)
       .use(rehypeKatex, { trust: true, strict: "ignore" })
       .use(rehypeStringify, { closeSelfClosing: true })
       .processSync(md);

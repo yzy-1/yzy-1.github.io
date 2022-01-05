@@ -85,7 +85,7 @@ function Plugins() {
       (x) =>
         new HtmlWebpackPlugin({
           title: x,
-          filename: "post/" + x + ".html",
+          filename: `post/${x}.html`,
           template: path.resolve(__dirname, "src/post.ejs"),
           chunks: [x],
           templateParameters: { post: posts[x] },

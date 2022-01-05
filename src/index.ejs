@@ -1,27 +1,25 @@
 <%= require("/header.ejs")({htmlWebpackPlugin}) %>
 <section class="splash-container">
   <div class="splash">
-    <h1 class="splash-head">yzy1's blog</h1>
-    <p class="splash-subhead">hello, world</p>
+    <div class="left">
+      <h1 class="splash-head">yzy1's blog</h1>
+      <p class="splash-subhead">hello, world</p>
+    </div>
   </div>
 </section>
 <section class="content">
-  <% Object.entries(posts).sort((x, y) => x[1].conf.uptime - y[1].conf.uptime).forEach(([postName, post]) => { %>
-    <% if (post.conf.tags.indexOf("pinned") >= 0) { %>
-      <article class="pinned">
-    <% } else { %>
-      <article>
-    <% } %>
-    <header><a href=<%= '"/post/' + postName + '.html"' %>><%= post.conf.title %></a></header>
+  <% Object.entries(posts).sort((x, y) => x[1].conf.tags.indexOf("pinned") < 0 !==
+  y[1].conf.tags.indexOf("pinned") < 0 ? x[1].conf.tags.indexOf("pinned") < 0 : x[1].conf.uptime -
+  y[1].conf.uptime).forEach(([postName, post]) => { %>
+  <article>
+    <header><%= `<a href="/post/${postName}.html">${post.conf.title}</a>` %></header>
     <div class="tags">
       <% post.conf.tags.forEach(tag => { %>
-        <a href="##" class="tag"><%= tag %></a>
+      <a href="##" class="tag"><%= tag %></a>
       <% }) %>
     </div>
-    <div class="text">
-      <%- post.md.slice(0, 256) %> 
-    </div>
-    </article>
+    <div class="text"><%- post.md.slice(0, 256) %></div>
+  </article>
   <% }) %>
 </section>
 <%= require("/footer.ejs")({}) %>

@@ -50,6 +50,12 @@ a:hover {
   padding: 0.625em 1em;
 }
 
+#sidebar .fa {
+  width: 16px;
+  text-align: center;
+  margin-right: 0.2em;
+}
+
 #sidebar .pure-menu-open {
   background: transparent;
   border: 0;

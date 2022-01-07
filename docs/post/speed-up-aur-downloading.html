@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>解决 AUR 下载软件包慢的问题</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/purecss@2.0.6/build/pure-min.css"
+      integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5"
+      crossorigin="anonymous"
+    />
+    <link
+      href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/grids-responsive-min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/katex@0.15.1/dist/katex.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/highlight.js@11.3.1/styles/atom-one-light.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/github-markdown-css@5.1.0/github-markdown-light.css"
+    />
+  <script defer src="../js/post.b40d710.js"></script><script defer src="../js/post/speed-up-aur-downloading.79a1dda.js"></script><link href="../css/post-speed-up-aur-downloading.7c10b3d.css" rel="stylesheet"></head>
+
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="#">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
+    <div id="wrap">
+      <div id="sidebar" class="pure-menu">
+  <a class="pure-menu-heading" href="/index.html">yzy1</a>
+  <ul class="pure-menu-list">
+    <li class="pure-menu-item">
+      <a href="/index.html" class="pure-menu-link"><i class="fa fa-home"></i>博客</a>
+    </li>
+    <li class="pure-menu-item">
+      <a href="/index.html" class="pure-menu-link"><i class="fa fa-tags"></i>标签</a>
+    </li>
+    <li class="pure-menu-item">
+      <a href="/index.html" class="pure-menu-link"><i class="fa fa-file-code-o"></i>模板</a>
+    </li>
+    <li class="pure-menu-item menu-item-divided">
+      <a href="/index.html" class="pure-menu-link"><i class="fa fa-external-link"></i>友链</a>
+    </li>
+    <li class="pure-menu-item">
+      <a href="/about.html" class="pure-menu-link"><i class="fa fa-user"></i>关于</a>
+    </li>
+  </ul>
+</div>
+
+      <div id="main">
+
+<header>
+  <h1>解决 AUR 下载软件包慢的问题</h1>
+</header>
+<section class="content">
+  <div class="markdown-body"><p><code>yay</code> 在安装 AUR 源的软件时会自动调用 <code>makepkg</code> 来打包软件包，而 <code>/etc/makepkg.conf</code> 是 <code>makepkg</code> 的配置文件，这个文件默认长这个样子（节选）：</p>
+<pre><code class="hljs language-yaml"><span class="hljs-comment"># ...</span>
+<span class="hljs-comment">#-- The download utilities that makepkg should use to acquire sources</span>
+<span class="hljs-comment">#  Format: 'protocol::agent'</span>
+<span class="hljs-string">DLAGENTS=('file::/usr/bin/curl</span> <span class="hljs-string">-gqC</span> <span class="hljs-bullet">-</span> <span class="hljs-string">-o</span> <span class="hljs-string">%o</span> <span class="hljs-string">%u'</span>
+          <span class="hljs-string">'ftp::/usr/bin/curl -gqfC - --ftp-pasv --retry 3 --retry-delay 3 -o %o %u'</span>
+          <span class="hljs-string">'http::/usr/bin/curl -gqb "" -fLC - --retry 3 --retry-delay 3 -o %o %u'</span>
+          <span class="hljs-string">'https::/usr/bin/curl -gqb "" -fLC - --retry 3 --retry-delay 3 -o %o %u'</span>
+          <span class="hljs-string">'rsync::/usr/bin/rsync --no-motd -z %u %o'</span>
+          <span class="hljs-string">'scp::/usr/bin/scp -C %u %o'</span><span class="hljs-string">)</span>
+<span class="hljs-comment"># ...</span>
+</code></pre>
+<p>为什么要用慢的要死的 <code>curl</code> 呢？为什么不用一个多线程的下载工具呢？我搜了一些大佬的博客，有换成 <code>aria2</code> 的，我选择了参数更加清爽的 <code>axel</code>。</p>
+<pre><code class="hljs language-yaml"><span class="hljs-string">DLAGENTS=('file::/usr/bin/curl</span> <span class="hljs-string">-gqC</span> <span class="hljs-bullet">-</span> <span class="hljs-string">-o</span> <span class="hljs-string">%o</span> <span class="hljs-string">%u'</span>
+          <span class="hljs-string">'ftp::/usr/bin/axel -n 15 -a -o %o %u'</span>
+          <span class="hljs-string">'http::/usr/bin/axel -n 15 -a -o %o %u'</span>
+          <span class="hljs-string">'https::/usr/bin/axel -n 15 -a -o %o %u'</span>
+          <span class="hljs-string">'rsync::/usr/bin/rsync --no-motd -z %u %o'</span>
+          <span class="hljs-string">'scp::/usr/bin/scp -C %u %o'</span><span class="hljs-string">)</span>
+</code></pre>
+<p>然而，<code>github</code> 上的软件包用的是亚马逊云，在国内似乎被墙了，不管多少个线程都下不动，所以我们还需要一点特殊优化。</p>
+<p>既然能把 <code>curl</code> 换成 <code>axel</code>，那么能不能换成一个我们自己定义的脚本呢？于是我在 <code>/usr/local/bin/</code> 下面新建了一个脚本 <code>fake_axel_for_makepkg</code>：</p>
+<pre><code class="hljs language-bash"><span class="hljs-meta">#!/bin/bash</span>
+
+domin=`<span class="hljs-built_in">echo</span> <span class="hljs-variable">$2</span> | <span class="hljs-built_in">cut</span> -f3 -d<span class="hljs-string">'/'</span>`;
+others=`<span class="hljs-built_in">echo</span> <span class="hljs-variable">$2</span> | <span class="hljs-built_in">cut</span> -f4- -d<span class="hljs-string">'/'</span>`;
+
+    url=<span class="hljs-variable">$2</span>;
+    /usr/bin/axel -n 15 -a -o <span class="hljs-variable">$1</span> <span class="hljs-variable">$url</span>;
+    <span class="hljs-built_in">exit</span>
+<span class="hljs-keyword">case</span> <span class="hljs-string">"<span class="hljs-variable">$domin</span>"</span> <span class="hljs-keyword">in</span> 
+    <span class="hljs-string">"github.com"</span>)
+    url=<span class="hljs-string">"https://ghproxy.com/"</span><span class="hljs-variable">$2</span>;
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">"download from github mirror <span class="hljs-variable">$url</span>"</span>;
+    /usr/bin/curl -gqb <span class="hljs-string">""</span> -fLC - --retry 3 --retry-delay 3 -o <span class="hljs-variable">$1</span> <span class="hljs-variable">$url</span>;
+    ;;
+    *)
+    url=<span class="hljs-variable">$2</span>;
+    /usr/bin/axel -n 15 -a -o <span class="hljs-variable">$1</span> <span class="hljs-variable">$url</span>;
+    ;;
+<span class="hljs-keyword">esac</span>
+</code></pre>
+<p>然后把 <code>makepkg.conf</code> 改成：</p>
+<pre><code class="hljs language-yaml"><span class="hljs-string">DLAGENTS=('file::/usr/bin/curl</span> <span class="hljs-string">-gqC</span> <span class="hljs-bullet">-</span> <span class="hljs-string">-o</span> <span class="hljs-string">%o</span> <span class="hljs-string">%u'</span>
+          <span class="hljs-string">'ftp::/usr/bin/axel -n 15 -a -o %o %u'</span>
+          <span class="hljs-string">'http::/usr/local/bin/fake_axel_for_makepkg %o %u'</span>
+          <span class="hljs-string">'https::/usr/local/bin/fake_axel_for_makepkg %o %u'</span>
+          <span class="hljs-string">'rsync::/usr/bin/rsync --no-motd -z %u %o'</span>
+          <span class="hljs-string">'scp::/usr/bin/scp -C %u %o'</span><span class="hljs-string">)</span>
+</code></pre>
+<p>这样下载速度就上来了。</p></div>
+</section>
+      </div>
+    </div>
+    <script src="https://unpkg.com/jquery@3.6.0/dist/jquery.min.js"></script>
+  </body>
+</html>
+

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>P8011 题解</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/purecss@2.0.6/build/pure-min.css"
+      integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5"
+      crossorigin="anonymous"
+    />
+    <link
+      href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/grids-responsive-min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/katex@0.15.1/dist/katex.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/highlight.js@11.3.1/styles/atom-one-light.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/github-markdown-css@5.1.0/github-markdown-light.css"
+    />
+  <script defer src="../js/post.b40d710.js"></script><script defer src="../js/post/solution-p8011.4312203.js"></script><link href="../css/post-solution-p8011.7c10b3d.css" rel="stylesheet"></head>
+
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="#">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
+    <div id="wrap">
+      <div id="sidebar" class="pure-menu">
+  <a class="pure-menu-heading" href="/index.html">yzy1</a>
+  <ul class="pure-menu-list">
+    <li class="pure-menu-item">
+      <a href="/index.html" class="pure-menu-link"><i class="fa fa-home"></i>博客</a>
+    </li>
+    <li class="pure-menu-item">
+      <a href="/index.html" class="pure-menu-link"><i class="fa fa-tags"></i>标签</a>
+    </li>
+    <li class="pure-menu-item">
+      <a href="/index.html" class="pure-menu-link"><i class="fa fa-file-code-o"></i>模板</a>
+    </li>
+    <li class="pure-menu-item menu-item-divided">
+      <a href="/index.html" class="pure-menu-link"><i class="fa fa-external-link"></i>友链</a>
+    </li>
+    <li class="pure-menu-item">
+      <a href="/about.html" class="pure-menu-link"><i class="fa fa-user"></i>关于</a>
+    </li>
+  </ul>
+</div>
+
+      <div id="main">
+
+<header>
+  <h1>P8011 题解</h1>
+</header>
+<section class="content">
+  <div class="markdown-body"><p>这里是出题人官方题解。</p>
+<h2>subtask 1</h2>
+<p>这不就 AC 自动机板子吗？</p>
+<h2>subtask 2</h2>
+<p>爆搜，枚举所有可能的 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span></span></span></span></span>，算概率相加即可。</p>
+<pre><code class="hljs language-cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Dfs</span><span class="hljs-params">(<span class="hljs-type">int</span> x, <span class="hljs-type">int</span> mx)</span> </span>{
+  <span class="hljs-keyword">if</span> (x == mx + <span class="hljs-number">1</span>) {
+    <span class="hljs-type">int</span> cnt = <span class="hljs-number">0</span>;
+    <span class="hljs-built_in">re</span> (i, m) {
+      <span class="hljs-built_in">re</span> (l, mx) {
+        <span class="hljs-type">int</span> r = l + b[i].<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>;
+        <span class="hljs-keyword">if</span> (r > mx) <span class="hljs-keyword">break</span>;
+        <span class="hljs-type">bool</span> fl = <span class="hljs-number">1</span>;
+        <span class="hljs-built_in">rep</span> (j, <span class="hljs-number">0</span>, b[i].<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>)
+          <span class="hljs-keyword">if</span> (b[i][j] != now[l + j]) {
+            fl = <span class="hljs-number">0</span>;
+            <span class="hljs-keyword">break</span>;
+          }
+        <span class="hljs-keyword">if</span> (fl) ++cnt;
+      }
+    }
+    <span class="hljs-type">int</span> gl = <span class="hljs-number">1</span>;
+    <span class="hljs-built_in">re</span> (i, mx)
+      gl = <span class="hljs-number">1ll</span> * gl * p[a[i]][now[i]] % mo;
+    <span class="hljs-keyword">if</span> (cnt &#x26; <span class="hljs-number">1</span>) ans[mx] += gl, <span class="hljs-built_in">umod</span>(ans[mx]);
+    <span class="hljs-keyword">return</span>;
+  }
+  <span class="hljs-built_in">re</span> (i, K)
+    now[x] = i, <span class="hljs-built_in">Dfs</span>(x + <span class="hljs-number">1</span>, mx);
+}
+</code></pre>
+<h2>subtask 3</h2>
+<p>设 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(i,j)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">)</span></span></span></span></span> 为当前 dp 到第 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span></span> 位，串的末尾有 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span></span></span></span></span> 个 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span> 的概率，<span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">g(i,j)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">)</span></span></span></span></span> 为当前 dp 到第 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span></span> 位，串的末尾有 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span></span></span></span></span> 个 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span> 时期望的致病性细菌个数。枚举 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo separator="true">,</mo><mi>j</mi></mrow><annotation encoding="application/x-tex">i,j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span></span></span></span></span> 转移即可。</p>
+<pre><code class="hljs language-cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Solve</span><span class="hljs-params">()</span> </span>{
+  <span class="hljs-built_in">re</span> (i, K) {
+    <span class="hljs-built_in">in</span>(p[i], K);
+    <span class="hljs-built_in">re</span> (j, K)
+      sump[i] += p[i][j], <span class="hljs-built_in">umod</span>(sump[i]);
+    <span class="hljs-type">int</span> ny = <span class="hljs-built_in">Pow</span>(sump[i], mo - <span class="hljs-number">2</span>, mo);
+    <span class="hljs-built_in">re</span> (j, K)
+      p[i][j] = <span class="hljs-number">1ll</span> * p[i][j] * ny % mo;
+    sump[i] = <span class="hljs-number">0</span>;
+    <span class="hljs-built_in">re</span> (j, K)
+      sump[i] += p[i][j], <span class="hljs-built_in">umod</span>(sump[i]);
+  }
+  f[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;
+  <span class="hljs-built_in">re</span> (i, n) {
+    <span class="hljs-built_in">rep</span> (j, <span class="hljs-number">0</span>, i) {
+      f[i][<span class="hljs-number">0</span>] += <span class="hljs-number">1ll</span> * f[i - <span class="hljs-number">1</span>][j] * ((mo + sump[a[i]] - p[a[i]][<span class="hljs-number">1</span>]) % mo) % mo, <span class="hljs-built_in">umod</span>(f[i][<span class="hljs-number">0</span>]);
+      g[i][<span class="hljs-number">0</span>] += <span class="hljs-number">1ll</span> * g[i - <span class="hljs-number">1</span>][j] * ((mo + sump[a[i]] - p[a[i]][<span class="hljs-number">1</span>]) % mo) % mo, <span class="hljs-built_in">umod</span>(g[i][<span class="hljs-number">0</span>]);
+    }
+    <span class="hljs-built_in">re</span> (j, i) {
+      f[i][j] = <span class="hljs-number">1ll</span> * f[i - <span class="hljs-number">1</span>][j - <span class="hljs-number">1</span>] * p[a[i]][<span class="hljs-number">1</span>] % mo, <span class="hljs-built_in">umod</span>(f[i][j]);
+      g[i][j] = <span class="hljs-number">1ll</span> * g[i - <span class="hljs-number">1</span>][j - <span class="hljs-number">1</span>] * p[a[i]][<span class="hljs-number">1</span>] % mo, <span class="hljs-built_in">umod</span>(g[i][j]);
+    }
+    <span class="hljs-built_in">rep</span> (j, <span class="hljs-number">0</span>, i) {
+      <span class="hljs-keyword">if</span> (j >= (<span class="hljs-type">int</span>)b[<span class="hljs-number">1</span>].<span class="hljs-built_in">size</span>()) g[i][j] = (<span class="hljs-number">0ll</span> + mo + f[i][j] - g[i][j]) % mo;
+      ans[i] += <span class="hljs-number">1ll</span> * g[i][j] % mo, <span class="hljs-built_in">umod</span>(ans[i]);
+    }
+  }
+}
+</code></pre>
+<h2>subtask 4</h2>
+<p>将所有 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>g</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">g_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> 建出 AC 自动机。设 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(i,j)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">)</span></span></span></span></span> 表示当前是 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span></span></span></span></span> 的第 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span></span> 个字符，且当前正好走到 AC 自动机的第 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span></span></span></span></span> 个节点的概率。<span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">g(i,j)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">)</span></span></span></span></span> 表示当前是 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span></span></span></span></span> 的第 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span></span> 个字符，在自动机的 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span></span></span></span></span> 号节点时出现的致病细菌的期望个数，转移即可。注意要用滚动数组压一下内存。</p>
+<p>注意需要提前用拓朴排序预处理一遍来保证复杂度。具体方式类似 <a href="https://www.luogu.com.cn/problem/P5357">AC 自动机（二次加强版）</a>。</p>
+<p>时间复杂度 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo>∑</mo><mi mathvariant="normal">∣</mi><msub><mi>g</mi><mi>i</mi></msub><mi mathvariant="normal">∣</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n\sum|g_i|)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">∣</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">∣</span><span class="mclose">)</span></span></span></span></span>。</p>
+<pre><code class="hljs language-cpp"><span class="hljs-keyword">struct</span> <span class="hljs-title hljs-class">Trie</span> {
+  <span class="hljs-type">int</span> e[N][<span class="hljs-number">109</span>], ed[N], fal[N], tot = <span class="hljs-number">1</span>;
+  <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Ins</span><span class="hljs-params">(<span class="hljs-type">const</span> vector&#x3C;<span class="hljs-type">int</span>> &#x26;v)</span> </span>{
+    <span class="hljs-type">int</span> x = <span class="hljs-number">1</span>;
+    <span class="hljs-built_in">each</span> (c, v)
+      x = e[x][c] = (e[x][c] ?: ++tot);
+    ++ed[x];
+  }
+  <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">AC</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-built_in">re</span> (i, K)
+      e[<span class="hljs-number">0</span>][i] = <span class="hljs-number">1</span>;
+    queue&#x3C;<span class="hljs-type">int</span>> q{{<span class="hljs-number">1</span>}};
+    <span class="hljs-keyword">while</span> (!q.<span class="hljs-built_in">empty</span>()) {
+      <span class="hljs-type">int</span> x = q.<span class="hljs-built_in">front</span>();
+      q.<span class="hljs-built_in">pop</span>();
+      <span class="hljs-built_in">re</span> (c, K) {
+        <span class="hljs-keyword">if</span> (e[x][c])
+          fal[e[x][c]] = e[fal[x]][c], q.<span class="hljs-built_in">push</span>(e[x][c]);
+        <span class="hljs-keyword">else</span>
+          e[x][c] = e[fal[x]][c];
+      }
+    }
+  }
+} tr;
+
+<span class="hljs-keyword">struct</span> <span class="hljs-title hljs-class">G</span> {
+  <span class="hljs-type">int</span> tot, h[N];
+  <span class="hljs-keyword">struct</span> <span class="hljs-title hljs-class">E</span> {
+    <span class="hljs-type">int</span> t, n;
+  } e[N];
+  <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">void</span> <span class="hljs-title">Add</span><span class="hljs-params">(<span class="hljs-type">int</span> f, <span class="hljs-type">int</span> t)</span> </span>{ e[++tot] = {t, h[f]}, h[f] = tot; }
+} falg;
+
+<span class="hljs-type">int</span> f[<span class="hljs-number">2</span>][N], g[<span class="hljs-number">2</span>][N], ans[N], p[<span class="hljs-number">1009</span>][<span class="hljs-number">1009</span>], sump[<span class="hljs-number">1009</span>], n, a[N], m, T, sumed[N], rd[N];
+vector&#x3C;<span class="hljs-type">int</span>> b[N];
+
+<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Topo</span><span class="hljs-params">()</span> </span>{
+  <span class="hljs-built_in">re</span> (i, tr.tot)
+    <span class="hljs-keyword">if</span> (tr.fal[i]) falg.<span class="hljs-built_in">Add</span>(tr.fal[i], i), ++rd[i], sumed[i] += tr.ed[i];
+  queue&#x3C;<span class="hljs-type">int</span>> q;
+  <span class="hljs-built_in">re</span> (i, tr.tot)
+    <span class="hljs-keyword">if</span> (rd[i] == <span class="hljs-number">0</span>) q.<span class="hljs-built_in">push</span>(i);
+  <span class="hljs-keyword">while</span> (!q.<span class="hljs-built_in">empty</span>()) {
+    <span class="hljs-type">int</span> qf = q.<span class="hljs-built_in">front</span>();
+    q.<span class="hljs-built_in">pop</span>();
+    <span class="hljs-built_in">nxt</span> (i, qf, falg) {
+      <span class="hljs-keyword">auto</span> t = falg.e[i].t;
+      sumed[t] += sumed[qf];
+      <span class="hljs-keyword">if</span> (--rd[t] == <span class="hljs-number">0</span>) q.<span class="hljs-built_in">push</span>(t);
+    }
+  }
+}
+
+<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">DP</span><span class="hljs-params">()</span> </span>{
+  f[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>] = <span class="hljs-number">1</span>;
+  <span class="hljs-built_in">rep</span> (i, <span class="hljs-number">0</span>, n) {
+    <span class="hljs-type">int</span> ii = i &#x26; <span class="hljs-number">1</span>;
+    <span class="hljs-built_in">re</span> (j, tr.tot) {
+      g[ii][j] = <span class="hljs-number">1ll</span> * <span class="hljs-built_in">Pow</span>(f[ii][j], mo - <span class="hljs-number">2</span>, mo) * g[ii][j] % mo;
+      <span class="hljs-keyword">if</span> (sumed[j] &#x26; <span class="hljs-number">1</span>) g[ii][j] = (<span class="hljs-number">1ll</span> + mo - g[ii][j]) % mo;
+      ans[i] += <span class="hljs-number">1ll</span> * f[ii][j] * g[ii][j] % mo, <span class="hljs-built_in">umod</span>(ans[i]);
+      <span class="hljs-built_in">re</span> (c, K) {
+        <span class="hljs-type">int</span> t = tr.e[j][c];
+        ll gx = <span class="hljs-number">1ll</span> * f[ii][j] * p[a[i + <span class="hljs-number">1</span>]][c] % mo;
+        f[ii ^ <span class="hljs-number">1</span>][t] += gx, <span class="hljs-built_in">umod</span>(f[ii ^ <span class="hljs-number">1</span>][t]);
+        g[ii ^ <span class="hljs-number">1</span>][t] += gx * g[ii][j] % mo, <span class="hljs-built_in">umod</span>(g[ii ^ <span class="hljs-number">1</span>][t]);
+      }
+    }
+    <span class="hljs-built_in">rep</span> (j, <span class="hljs-number">0</span>, tr.tot)
+      f[ii][j] = <span class="hljs-number">0</span>, g[ii][j] = <span class="hljs-number">0</span>;
+  }
+}
+
+</code></pre>
+<h2>subtask 5~6</h2>
+<p>我们发现 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi></mrow><annotation encoding="application/x-tex">P</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span></span></span></span></span> 矩阵可以矩乘。快速幂预处理后按照 sub4 的方法做即可。</p>
+<p>时间复杂度 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo>∑</mo><mi mathvariant="normal">∣</mi><msub><mi>g</mi><mi>i</mi></msub><mi mathvariant="normal">∣</mi><mo>+</mo><msup><mi>k</mi><mn>3</mn></msup><mi>log</mi><mo>⁡</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n\sum|g_i|+k^3 \log t)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">∣</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">t</span><span class="mclose">)</span></span></span></span></span>。</p></div>
+</section>
+      </div>
+    </div>
+    <script src="https://unpkg.com/jquery@3.6.0/dist/jquery.min.js"></script>
+  </body>
+</html>
+

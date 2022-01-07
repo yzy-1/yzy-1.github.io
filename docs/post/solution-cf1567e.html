@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CF1567E 题解</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/purecss@2.0.6/build/pure-min.css"
+      integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5"
+      crossorigin="anonymous"
+    />
+    <link
+      href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/grids-responsive-min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/katex@0.15.1/dist/katex.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/highlight.js@11.3.1/styles/atom-one-light.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/github-markdown-css@5.1.0/github-markdown-light.css"
+    />
+  <script defer src="../js/post.b40d710.js"></script><script defer src="../js/post/solution-cf1567e.1d8f18f.js"></script><link href="../css/post-solution-cf1567e.7c10b3d.css" rel="stylesheet"></head>
+
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="#">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
+    <div id="wrap">
+      <div id="sidebar" class="pure-menu">
+  <a class="pure-menu-heading" href="/index.html">yzy1</a>
+  <ul class="pure-menu-list">
+    <li class="pure-menu-item">
+      <a href="/index.html" class="pure-menu-link"><i class="fa fa-home"></i>博客</a>
+    </li>
+    <li class="pure-menu-item">
+      <a href="/index.html" class="pure-menu-link"><i class="fa fa-tags"></i>标签</a>
+    </li>
+    <li class="pure-menu-item">
+      <a href="/index.html" class="pure-menu-link"><i class="fa fa-file-code-o"></i>模板</a>
+    </li>
+    <li class="pure-menu-item menu-item-divided">
+      <a href="/index.html" class="pure-menu-link"><i class="fa fa-external-link"></i>友链</a>
+    </li>
+    <li class="pure-menu-item">
+      <a href="/about.html" class="pure-menu-link"><i class="fa fa-user"></i>关于</a>
+    </li>
+  </ul>
+</div>
+
+      <div id="main">
+
+<header>
+  <h1>CF1567E 题解</h1>
+</header>
+<section class="content">
+  <div class="markdown-body"><h2>题目大意</h2>
+<p>单点修改，区间严格不降子区间计数。</p>
+<h2>简要做法</h2>
+<p>考虑分块，每个块内维护所有极大不降区间的两个端点。这样一个长度为 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi></mrow><annotation encoding="application/x-tex">L</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span></span></span></span></span> 的极大不降区间的对答案的贡献就为 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>L</mi></msubsup><mi>i</mi></mrow><annotation encoding="application/x-tex">\sum_{i=1}^L i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2809em;vertical-align:-0.2997em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9812em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">L</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2997em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">i</span></span></span></span></span>。</p>
+<p>对于单点修改，直接暴力重构整个块。</p>
+<p>比较麻烦的是块与块之间的拼接，我们可以记录「最后一个遍历到的区间」是什么，然后在遍历到一个新块时判断这个块的第一个元素是否大于等于上一个块的最后一个元素，如果是则可以将这个块的第一个极大区间和「最后一个遍历到的区间」进行合并。</p>
+<p>时间复杂度 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo>+</mo><mi>q</mi><msqrt><mi>n</mi></msqrt><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n+q\sqrt n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0503em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8003em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="padding-left:0.833em;">n</span></span><span style="top:-2.7603em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2397em;"><span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span>，空间复杂度 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></span>。可以通过此题。</p>
+<pre><code class="hljs language-cpp"><span class="hljs-type">int</span> bl[N], lbl[N], rbl[N], a[N], sz, n, m, sum[N];
+vector&#x3C;pair&#x3C;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>>> vec[N];
+
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">Sum</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>{ <span class="hljs-keyword">return</span> x * (x + <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>; }
+
+<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Up</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>{
+  <span class="hljs-type">int</span> b = bl[x];
+  vec[b].<span class="hljs-built_in">clear</span>();
+  vec[b].<span class="hljs-built_in">push_back</span>({lbl[x], lbl[x]});
+  <span class="hljs-built_in">rep</span> (i, lbl[x] + <span class="hljs-number">1</span>, rbl[x]) {
+    <span class="hljs-keyword">if</span> (a[i - <span class="hljs-number">1</span>] &#x3C;= a[i])
+      ++vec[b].<span class="hljs-built_in">back</span>().second;
+    <span class="hljs-keyword">else</span>
+      vec[b].<span class="hljs-built_in">push_back</span>({i, i});
+  }
+  sum[b] = <span class="hljs-number">0</span>;
+  <span class="hljs-built_in">each</span> (x, vec[b])
+    sum[b] += <span class="hljs-built_in">Sum</span>(x.second - x.first + <span class="hljs-number">1</span>);
+}
+
+<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Init</span><span class="hljs-params">()</span> </span>{
+  sz = <span class="hljs-built_in">max</span>((ll)<span class="hljs-built_in">sqrt</span>(n), <span class="hljs-number">3ll</span>);
+  <span class="hljs-built_in">rep</span> (i, <span class="hljs-number">1</span>, n) {
+    bl[i] = (i - <span class="hljs-number">1</span>) / sz + <span class="hljs-number">1</span>;
+    lbl[i] = (bl[i] - <span class="hljs-number">1</span>) * sz + <span class="hljs-number">1</span>;
+    rbl[i] = <span class="hljs-built_in">min</span>(bl[i] * sz, n);
+  }
+  <span class="hljs-built_in">ste</span>(i, <span class="hljs-number">1</span>, n, sz) <span class="hljs-built_in">Up</span>(i);
+}
+
+<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Set</span><span class="hljs-params">(<span class="hljs-type">int</span> p, <span class="hljs-type">int</span> x)</span> </span>{
+  a[p] = x;
+  <span class="hljs-built_in">Up</span>(p);
+}
+
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">Ask</span><span class="hljs-params">(<span class="hljs-type">int</span> l, <span class="hljs-type">int</span> r)</span> </span>{
+  <span class="hljs-type">int</span> res = <span class="hljs-number">0</span>;
+  <span class="hljs-keyword">if</span> (bl[l] == bl[r]) {
+    vector&#x3C;pair&#x3C;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>>> v;
+    v.<span class="hljs-built_in">push_back</span>({l, l});
+    <span class="hljs-built_in">rep</span> (i, l + <span class="hljs-number">1</span>, r) {
+      <span class="hljs-keyword">if</span> (a[i - <span class="hljs-number">1</span>] &#x3C;= a[i])
+        ++v.<span class="hljs-built_in">back</span>().second;
+      <span class="hljs-keyword">else</span>
+        v.<span class="hljs-built_in">push_back</span>({i, i});
+    }
+    <span class="hljs-built_in">each</span> (x, v)
+      res += <span class="hljs-built_in">Sum</span>(x.second - x.first + <span class="hljs-number">1</span>);
+    <span class="hljs-keyword">return</span> res;
+  }
+  res += <span class="hljs-built_in">Ask</span>(l, rbl[l]);
+  pair&#x3C;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>> lst = vec[bl[l]].<span class="hljs-built_in">back</span>();
+  <span class="hljs-built_in">up</span>(lst.first, l);
+  <span class="hljs-built_in">ste</span>(i, lbl[l] + sz, rbl[r] - sz, sz) {
+    <span class="hljs-type">int</span> b = bl[i];
+    res += sum[b];
+    <span class="hljs-comment">// 拼接</span>
+    <span class="hljs-keyword">if</span> (a[lbl[i] - <span class="hljs-number">1</span>] &#x3C;= a[lbl[i]]) {
+      res -= <span class="hljs-built_in">Sum</span>(vec[b][<span class="hljs-number">0</span>].second - vec[b][<span class="hljs-number">0</span>].first + <span class="hljs-number">1</span>);
+      res -= <span class="hljs-built_in">Sum</span>(lst.second - lst.first + <span class="hljs-number">1</span>);
+      res += <span class="hljs-built_in">Sum</span>(vec[b][<span class="hljs-number">0</span>].second - lst.first + <span class="hljs-number">1</span>);
+      <span class="hljs-built_in">up</span>(lst.second, vec[b][<span class="hljs-number">0</span>].second);
+    }
+    <span class="hljs-keyword">if</span> (lst.second != rbl[i]) lst = vec[b].<span class="hljs-built_in">back</span>();
+  }
+  <span class="hljs-keyword">if</span> (a[lbl[r] - <span class="hljs-number">1</span>] &#x3C;= a[lbl[r]]) {
+    res -= <span class="hljs-built_in">Sum</span>(<span class="hljs-built_in">min</span>(r, vec[bl[r]][<span class="hljs-number">0</span>].second) - vec[bl[r]][<span class="hljs-number">0</span>].first + <span class="hljs-number">1</span>);
+    res -= <span class="hljs-built_in">Sum</span>(lst.second - lst.first + <span class="hljs-number">1</span>);
+    res += <span class="hljs-built_in">Sum</span>(<span class="hljs-built_in">min</span>(r, vec[bl[r]][<span class="hljs-number">0</span>].second) - lst.first + <span class="hljs-number">1</span>);
+  }
+  res += <span class="hljs-built_in">Ask</span>(lbl[r], r);
+  <span class="hljs-keyword">return</span> res;
+}
+</code></pre></div>
+</section>
+      </div>
+    </div>
+    <script src="https://unpkg.com/jquery@3.6.0/dist/jquery.min.js"></script>
+  </body>
+</html>
+

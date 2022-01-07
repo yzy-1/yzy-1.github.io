@@ -7,7 +7,7 @@
  * or disable the default devtool with "devtool: false".
  * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
  */
-(self["webpackChunkyzy_1_github_io"] = self["webpackChunkyzy_1_github_io"] || []).push([["helloworld"],{
+(self["webpackChunkyzy_1_github_io"] = self["webpackChunkyzy_1_github_io"] || []).push([["post-xonsh"],{
 
 /***/ "./src/css/global.css":
 /*!****************************!*\

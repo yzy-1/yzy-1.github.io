@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Python + Shell = ? | Xonsh 入门</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/purecss@2.0.6/build/pure-min.css"
+      integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5"
+      crossorigin="anonymous"
+    />
+    <link
+      href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/grids-responsive-min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/katex@0.15.1/dist/katex.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/highlight.js@11.3.1/styles/atom-one-light.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/github-markdown-css@5.1.0/github-markdown-light.css"
+    />
+  <script defer src="../js/post.b40d710.js"></script><script defer src="../js/post/xonsh.4ea00b2.js"></script><link href="../css/post-xonsh.7c10b3d.css" rel="stylesheet"></head>
+
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="#">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
+    <div id="wrap">
+      <div id="sidebar" class="pure-menu">
+  <a class="pure-menu-heading" href="/index.html">yzy1</a>
+  <ul class="pure-menu-list">
+    <li class="pure-menu-item">
+      <a href="/index.html" class="pure-menu-link"><i class="fa fa-home"></i>博客</a>
+    </li>
+    <li class="pure-menu-item">
+      <a href="/index.html" class="pure-menu-link"><i class="fa fa-tags"></i>标签</a>
+    </li>
+    <li class="pure-menu-item">
+      <a href="/index.html" class="pure-menu-link"><i class="fa fa-file-code-o"></i>模板</a>
+    </li>
+    <li class="pure-menu-item menu-item-divided">
+      <a href="/index.html" class="pure-menu-link"><i class="fa fa-external-link"></i>友链</a>
+    </li>
+    <li class="pure-menu-item">
+      <a href="/about.html" class="pure-menu-link"><i class="fa fa-user"></i>关于</a>
+    </li>
+  </ul>
+</div>
+
+      <div id="main">
+
+<header>
+  <h1>Python + Shell = ? | Xonsh 入门</h1>
+</header>
+<section class="content">
+  <div class="markdown-body"><h2>前言</h2>
+<p>各位在书写 shell 脚本时有没有遇到过这些不称心之处：</p>
+<ul>
+<li>bash：语法繁琐，就算个 <code>1+1</code> 也要写成 <code>((1+1))</code> 或者借助外部程序 <code>bc</code> 写成 <code>'1+1' | bc</code> 这种丑陋的东西。且不适合作为交互 shell 来使用。</li>
+<li>zsh：语法方面同 bash。</li>
+<li>fish：语法方面各种参数乱飞，就拿用来定义变量的 <code>set</code> 来说吧，就有 <code>-x</code>、<code>-g</code>、<code>-a</code>、<code>-e</code> 等各种参数，用来写脚本可读性也不是很高。</li>
+</ul>
+<p>这时候，我们就希望能借用高级语言中的一些语法到 shell 中来，这会大大提高脚本的可读性和编写代码时的速度。为了解决这个问题，Xonsh 就诞生了。<del>你说 powershell？这东西又臭又长的大驼峰、全名称命名法，就让人没有使用它的想法。</del></p>
+<h2>什么是 Xonsh？</h2>
+<blockquote>
+<p>The xonsh shell lets you easily mix Python and shell commands in a powerful and simplified approach to the command line.</p>
+</blockquote>
+<p>一句话：Xonsh = Python + shell。</p>
+<p>Xonsh 是 shell，它兼容一部分常用 bash 语法，如：</p>
+<div class="math math-display"><span class="katex-error" title="ParseError: KaTeX parse error: Expected a control sequence at position 5: \def{̲\ba}{\begin{ali…" style="color:#cc0000">\def{\ba}{\begin{aligned}\dollar}
+\def{\ab}{\end{aligned}\\}
+\newcommand{\B}[1]{{\texttt{#1}}}
+\def{\kw}{\textcolor{#FFAE57}}
+\def{\st}{\textcolor{#BBE67E}}
+\def{\dollar}{\textcolor{#5CCFE6}{\texttt{\$}}\ }
+\color{#D9D7CE}\colorbox{#212733}{
+$\begin{array}{ll}
+\ba&#x26;\B{\kw{cd} home}\ab\\
+\ba&#x26;\B{\kw{cat} /etc/passwd | \kw{grep} root}\ab\\
+\ba&#x26;\B{\kw{ls} -la}\ab
+\end{array}$
+}\color{transparent}{\$}</span></div>
+<p>Xonsh 是 Python，它是 Python 3.6+ 的超集，也就是说你可以使用 Python 语言中的 import 等高级语法，如：</p>
+<div class="math math-display"><span class="katex-error" title="ParseError: KaTeX parse error: Expected a control sequence at position 5: \def{̲\ba}{\begin{ali…" style="color:#cc0000">\def{\ba}{\begin{aligned}\dollar}
+\def{\ab}{\end{aligned}\\}
+\newcommand{\B}[1]{{\texttt{#1}}}
+\def{\kw}{\textcolor{#FFAE57}}
+\def{\st}{\textcolor{#BBE67E}}
+\def{\co}{\textcolor{#D4BFFF}}
+\def{\lxl}{{\texttt{\$}}}
+\def{\dollar}{\textcolor{#5CCFE6}\lxl\ }
+\color{#D9D7CE}\colorbox{#212733}{
+$\begin{array}{ll}
+\ba&#x26;\B{\co2 + \co2}\ab\\
+\ba
+&#x26;\B{\kw{import} json}\\[-0.5em]
+&#x26;\B{j = json.loads(\st{'\{"Hello": "world!", "Answer": 42\}'})}\\[-0.5em]
+&#x26;\B{print(j[\st{'Answer'}])}\\[-0.5em]
+\ab
+\end{array}$
+}\color{transparent}{\$}</span></div>
+<p>Xonsh 是 Python 中的 shell。在 Xonsh 里，你可以将 Python 与 shell 命令结合使用，如：</p>
+<div class="math math-display"><span class="katex-error" title="ParseError: KaTeX parse error: Expected a control sequence at position 5: \def{̲\ba}{\begin{ali…" style="color:#cc0000">\def{\ba}{\begin{aligned}\dollar}
+\def{\ab}{\end{aligned}\\}
+\newcommand{\B}[1]{{\texttt{#1}}}
+\def{\kw}{\textcolor{#FFAE57}}
+\def{\st}{\textcolor{#BBE67E}}
+\def{\co}{\textcolor{#D4BFFF}}
+\def{\op}{\textcolor{#80D4FF}}
+\def{\lxl}{{\texttt{\$}}}
+\def{\dollar}{\textcolor{#5CCFE6}\lxl\ }
+\color{#D9D7CE}\colorbox{#212733}{
+$\begin{array}{ll}
+\ba&#x26;\B{len(\op{\lxl(}\kw{curl} -L https://xon.sh\op{)})}\ab\\
+\ba
+&#x26;\B{\kw{for} filename \kw{in} \st{'.*'}:}\\[-0.5em]
+&#x26;\B{\quad print(filename)}\\[-0.5em]
+&#x26;\B{\quad \kw{du} -sh \op{@(}filename\op)}\\[-0.5em]
+\ab
+\end{array}$
+}\color{transparent}{\$}</span></div>
+<p>Xonsh 是 shell 中的 Python。你可以在 Python 中创建一些变量和参数，然后在 shell 命令中使用它们，如：</p>
+<div class="math math-display"><span class="katex-error" title="ParseError: KaTeX parse error: Expected a control sequence at position 5: \def{̲\ba}{\begin{ali…" style="color:#cc0000">\def{\ba}{\begin{aligned}\dollar}
+\def{\ab}{\end{aligned}\\}
+\newcommand{\B}[1]{{\texttt{#1}}}
+\def{\kw}{\textcolor{#FFAE57}}
+\def{\st}{\textcolor{#BBE67E}}
+\def{\co}{\textcolor{#D4BFFF}}
+\def{\op}{\textcolor{#80D4FF}}
+\def{\lxl}{{\texttt{\$}}}
+\def{\dollar}{\textcolor{#5CCFE6}\lxl\ }
+\color{#D9D7CE}\colorbox{#212733}{
+$\begin{array}{ll}
+\ba&#x26;\B{var = \st{'he'} + \st{'llo'}}\ab\\
+\ba&#x26;\B{\kw{echo} \op{@(}var\op) > tmp/\op{@(}var\op)}\ab\\
+\ba&#x26;\B{\kw{echo} \op{@(}i \kw{for} i \kw{in} range(\co{42})\op)}\ab
+\end{array}$
+}\color{transparent}{\$}</span></div>
+<p>总结来说：Xonsh 是一个能让你感觉舒适的 Shell。</p>
+<h2>安装</h2>
+<p>要安装 Xonsh 非常简单，你可以直接使用 <code>pip</code> 安装它：</p>
+<div class="math math-display"><span class="katex-error" title="ParseError: KaTeX parse error: Expected a control sequence at position 5: \def{̲\ba}{\begin{ali…" style="color:#cc0000">\def{\ba}{\begin{aligned}\dollar}
+\def{\ab}{\end{aligned}\\}
+\newcommand{\B}[1]{{\texttt{#1}}}
+\def{\kw}{\textcolor{#FFAE57}}
+\def{\st}{\textcolor{#BBE67E}}
+\def{\co}{\textcolor{#D4BFFF}}
+\def{\op}{\textcolor{#80D4FF}}
+\def{\lxl}{{\texttt{\$}}}
+\def{\dollar}{\textcolor{#5CCFE6}\lxl\ }
+\color{#D9D7CE}\colorbox{#212733}{
+$\begin{array}{ll}
+\ba&#x26;\B{\kw{python3} -m pip install 'xonsh[full]'}\ab
+\end{array}$
+}\color{transparent}{\$}</span></div>
+<p>如果你在用 arch 系的操作系统，也可以使用 <code>pacman</code>：</p>
+<div class="math math-display"><span class="katex-error" title="ParseError: KaTeX parse error: Expected a control sequence at position 5: \def{̲\ba}{\begin{ali…" style="color:#cc0000">\def{\ba}{\begin{aligned}\dollar}
+\def{\ab}{\end{aligned}\\}
+\newcommand{\B}[1]{{\texttt{#1}}}
+\def{\kw}{\textcolor{#FFAE57}}
+\def{\st}{\textcolor{#BBE67E}}
+\def{\co}{\textcolor{#D4BFFF}}
+\def{\op}{\textcolor{#80D4FF}}
+\def{\lxl}{{\texttt{\$}}}
+\def{\dollar}{\textcolor{#5CCFE6}\lxl\ }
+\color{#D9D7CE}\colorbox{#212733}{
+$\begin{array}{ll}
+\ba&#x26;\B{\kw{pacman} -S xonsh}\ab
+\end{array}$
+}\color{transparent}{\$}</span></div>
+<p>安装完成后，你可以将其设置为默认 Shell：</p>
+<div class="math math-display"><span class="katex-error" title="ParseError: KaTeX parse error: Expected a control sequence at position 5: \def{̲\ba}{\begin{ali…" style="color:#cc0000">\def{\ba}{\begin{aligned}\dollar}
+\def{\ab}{\end{aligned}\\}
+\newcommand{\B}[1]{{\texttt{#1}}}
+\def{\kw}{\textcolor{#FFAE57}}
+\def{\st}{\textcolor{#BBE67E}}
+\def{\co}{\textcolor{#D4BFFF}}
+\def{\op}{\textcolor{#80D4FF}}
+\def{\lxl}{{\texttt{\$}}}
+\def{\dollar}{\textcolor{#5CCFE6}\lxl\ }
+\color{#D9D7CE}\colorbox{#212733}{
+$\begin{array}{ll}
+\ba&#x26;\B{\kw{chsh} -s /usr/bin/xonsh}\ab
+\end{array}$
+}\color{transparent}{\$}</span></div></div>
+</section>
+      </div>
+    </div>
+    <script src="https://unpkg.com/jquery@3.6.0/dist/jquery.min.js"></script>
+  </body>
+</html>
+

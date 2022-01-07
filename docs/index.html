@@ -77,6 +77,26 @@
 <section class="content">
   
   <article>
+    <header><a href="/post/helloworld.html">Hello world</a></header>
+    <div class="tags">
+      
+      <a href="##" class="tag">test</a>
+      
+      <a href="##" class="tag">test2</a>
+      
+    </div>
+    <div class="text">
+这是一篇测试博客。
+
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta eius quod nesciunt unde iste voluptatibus qui. Repellendus totam optio error! Natus debitis impedit dolorem atque, nam provident dolorum laudantium aspernatur?
+
+&gt; 这是一段引用。
+
+- hello
+-</div>
+  </article>
+  
+  <article>
     <header><a href="/post/test.html">Test 测试博客</a></header>
     <div class="tags">
       
@@ -97,23 +117,736 @@ $$
   </article>
   
   <article>
-    <header><a href="/post/helloworld.html">Hello world</a></header>
+    <header><a href="/post/solution-p8011.html">P8011 题解</a></header>
     <div class="tags">
       
-      <a href="##" class="tag">test</a>
-      
-      <a href="##" class="tag">test2</a>
+      <a href="##" class="tag">题解</a>
       
     </div>
-    <div class="text">
-这是一篇测试博客。
+    <div class="text">这里是出题人官方题解。
 
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta eius quod nesciunt unde iste voluptatibus qui. Repellendus totam optio error! Natus debitis impedit dolorem atque, nam provident dolorum laudantium aspernatur?
+## subtask 1
 
-&gt; 这是一段引用。
+这不就 AC 自动机板子吗？
 
-- hello
--</div>
+## subtask 2
+
+爆搜，枚举所有可能的 $S$，算概率相加即可。
+
+&#x60;&#x60;&#x60;cpp
+void Dfs(int x, int mx) {
+  if (x == mx + 1) {
+    int cnt = 0;
+    re (i, m) {
+      re (l, mx) {
+        int r = l + b[i].size() - 1;
+        if (r &gt; mx) break;
+    </div>
+  </article>
+  
+  <article>
+    <header><a href="/post/solution-cf1340f.html">CF1340F 题解</a></header>
+    <div class="tags">
+      
+      <a href="##" class="tag">题解</a>
+      
+    </div>
+    <div class="text">这似乎是一片时间复杂度是假的的题解？欢迎 hack。
+
+## 题目大意
+
+维护一个长度为 $n$ 的括号序列，括号共有 $k$ 种，进行 $m$ 次操作。支持单点修改，区间询问括号是否匹配。$n,q\le 10^5$。
+
+## 做法介绍
+
+考虑分块，每 $\sqrt n$ 个元素分成一块。对于每个块内，用栈预处理出当前块进行匹配的结果，你可以理解为：将这个块中的括号序列进行「化简」。如果这个块本身就失配，那询问区间中如果包含这个整块答案就一定是 &#x60;NO&#x60;。否则，这个块进行匹配后一定是一段右括号紧跟上一段左括</div>
+  </article>
+  
+  <article>
+    <header><a href="/post/solution-p7998.html">P7998 题解</a></header>
+    <div class="tags">
+      
+      <a href="##" class="tag">题解</a>
+      
+    </div>
+    <div class="text">## 题目大意
+
+有一个数 $x \in [1,n]$，并非一开始就确定，每次你可以选择一个区间 $[a,b]$（花费 $\dfrac{1}{b-a+1}$ 的代价），交互库会选择一个数 $c \in [a,b]$ 并告诉你 $c$ 与 $x$ 的大小关系，现在你需要在 $1.9813035$ 总代价内求出 $x$。
+
+## 做法
+
+考虑 DP，设 $dp(i)$ 表示当前要猜的是大小为 $i$ 的区间时，要猜到数字最差情况所耗费的代价。则有：
+$$
+dp(i)=\begin{cases}
+0 &amp; i\le</div>
+  </article>
+  
+  <article>
+    <header><a href="/post/xonsh.html">Python + Shell = ? | Xonsh 入门</a></header>
+    <div class="tags">
+      
+      <a href="##" class="tag">linux</a>
+      
+    </div>
+    <div class="text">## 前言
+
+各位在书写 shell 脚本时有没有遇到过这些不称心之处：
+
+- bash：语法繁琐，就算个 &#x60;1+1&#x60; 也要写成 &#x60;((1+1))&#x60; 或者借助外部程序 &#x60;bc&#x60; 写成 &#x60;&#x27;1+1&#x27; | bc&#x60; 这种丑陋的东西。且不适合作为交互 shell 来使用。
+- zsh：语法方面同 bash。
+- fish：语法方面各种参数乱飞，就拿用来定义变量的 &#x60;set&#x60; 来说吧，就有 &#x60;-x&#x60;、&#x60;-g&#x60;、&#x60;-a&#x60;、&#x60;-e&#x60; 等各种参数，用来写脚本可读性也不是很高。
+
+这时候，我们就希望能借用高级语言中的一些语法</div>
+  </article>
+  
+  <article>
+    <header><a href="/post/solution-cf848c.html">CF848C 题解</a></header>
+    <div class="tags">
+      
+      <a href="##" class="tag">题解</a>
+      
+    </div>
+    <div class="text">题解区好像都是 polylog 的解法，我来发一个 $O(n^{\frac 5 3}\log n)$ 的解法。
+
+## 题目大意
+
+设 $F(i,l,r)$ 为值 $i$ 在区间 $[l,r]$ 内最后一次出现的下标减第一次出现的下标。
+
+- &#x60;1 x y&#x60;：单点修改 $a_x \gets y$。
+- &#x60;2 l r&#x60;：求 $\sum_{i=1}^n F(i,l,r)$。
+
+## 做法 1（TLE）
+
+考虑带修莫队。对于每个不同的颜色，开一个 &#x60;set&#x60; 维护该颜色出现的下标。则颜色 $i$ 对答案的贡献就为</div>
+  </article>
+  
+  <article>
+    <header><a href="/post/solution-p7492.html">P7492 题解</a></header>
+    <div class="tags">
+      
+      <a href="##" class="tag">题解</a>
+      
+    </div>
+    <div class="text">单根号锤了 std 的俩 $\log$！
+
+考虑分块，把原序列分成 $\sqrt n$ 块。
+
+对于 $1$ 操作是经典操作了。直接维护块内最大连续字段和、最大前缀和、最大后缀和。然后查询时拼接块处理，输出最大值即可。
+
+对于 $2$ 操作，我们可以根据按位 $\rm or$ 运算的性质，由于一个数按位 $\rm or$ 上另一个数后，该数的 $\rm popcount$ 值一定会增大。最坏情况下，该数初始为 $0$，则最多进行 $32$ 次按位 $\rm or$ 操作后一定为 $-1$。此时再对 $-1$</div>
+  </article>
+  
+  <article>
+    <header><a href="/post/solution-p7943.html">P7943 题解</a></header>
+    <div class="tags">
+      
+      <a href="##" class="tag">题解</a>
+      
+    </div>
+    <div class="text">## D1
+
+考虑将贡献分为两种——字符串内部的贡献和拼接处产生的贡献。第一种贡献直接暴力求即可，重点是第二种。考虑一个有长度为 $i$ 的连续极大后缀的字符串和一个长度为 $j$ 的极大连续前缀的字符串相拼接。会对答案造成 $i+j-k+1$ 的贡献。我们可以预处理出有极大前缀为字符 $c$，长度为 $i$ 的字符串数量 $\operatorname{pre}(c,i)$，极大后缀为字符 $c$，长度为 $j$ 的字符串数量 $\operatorname{suf}(c,j)$。枚举 $c,i,j$，从两个</div>
+  </article>
+  
+  <article>
+    <header><a href="/post/solution-p7942.html">P7942 题解</a></header>
+    <div class="tags">
+      
+      <a href="##" class="tag">题解</a>
+      
+    </div>
+    <div class="text">考虑将贡献分为两种——字符串内部的贡献和拼接处产生的贡献。第一种贡献直接暴力求即可，重点是第二种。考虑一个有长度为 $i$ 的连续极大后缀的字符串和一个长度为 $j$ 的极大连续前缀的字符串相拼接。会对答案造成 $i+j-k+1$ 的贡献。我们可以预处理出有极大前缀为字符 $c$，长度为 $i$ 的字符串数量 $\operatorname{pre}(c,i)$，极大后缀为字符 $c$，长度为 $j$ 的字符串数量 $\operatorname{suf}(c,j)$。枚举 $c,i,j$，从两个集合各选出一个</div>
+  </article>
+  
+  <article>
+    <header><a href="/post/solution-p7941.html">P7941 题解</a></header>
+    <div class="tags">
+      
+      <a href="##" class="tag">题解</a>
+      
+    </div>
+    <div class="text">首先考虑什么样的表达式是一个结果一定为 $0$，什么样的一定为 $1$，什么样的既可以为 $0$ 也可以为 $1$。
+
+- 如果运算符为 &#x60;?&#x60;，则如果左操作数和右操作数确定且相同，则结果一定为左操作数。否则结果可以是 $0$ 或 $1$。
+- 如果运算符为 &#x60;&amp;&#x60;，且左右操作数中至少有一个确定为 $0$，则结果一定为 $0$。否则如果两个操作数均确定，则结果为两操作数按位与的结果。否则结果可以是 $0$ 或 $1$。
+- 如果运算符为 &#x60;|&#x60;，且左右操作数中至少有一个确定为 $1$，则结果一定为 $1$。</div>
+  </article>
+  
+  <article>
+    <header><a href="/post/solution-p7939.html">P7939 题解</a></header>
+    <div class="tags">
+      
+      <a href="##" class="tag">题解</a>
+      
+    </div>
+    <div class="text">对于 easy version，有一个显然的结论：最优方案一定能使 A 队每一局都赢。
+
+- 对于前 $n$ 个人，通过修改 $a$ 数组使得 A 队全胜，这样可以保证对于 $a$ 数组的修改至多为 $n$ 次；
+- 对于后 $n$ 个人，通过修改 $b$ 数组使得 A 队全胜，这样可以保证对于 $b$ 数组的修改至多为 $n$ 次。
+
+&#x60;&#x60;&#x60;cpp
+int a[N], b[N], n, T;
+signed main() {
+  in(T); while(T--){
+    in(n)(a, 2 * n)(</div>
+  </article>
+  
+  <article>
+    <header><a href="/post/solution-p7938.html">P7938 题解</a></header>
+    <div class="tags">
+      
+      <a href="##" class="tag">题解</a>
+      
+    </div>
+    <div class="text">考虑到最优构造方案一定是把所有括号序列尽可能的构造成 &#x60;()&#x60;，考虑贪心，对于每一个左括号，寻找到它后面未被匹配的第一个右括号，进行匹配即可。
+
+在整个串都匹配完成后，如果得到的 &#x60;()&#x60; 串组数 $\ge m$，则说明有合法的构造方案，否则说明没有。
+
+至于时间复杂度，如果你是对于每个左括号，暴力寻找它右边的第一个没匹配的右括号，则复杂度为 $O(Tn^2)$。当然，你也可以使用一个 &#x60;queue&#x60; 来将复杂度优化为 $O(Tn)$，但是介于此题的数据范围，没有优化的必要。
+
+&#x60;&#x60;&#x60;cpp
+char s[</div>
+  </article>
+  
+  <article>
+    <header><a href="/post/solution-cf455d.html">CF455D 题解</a></header>
+    <div class="tags">
+      
+      <a href="##" class="tag">题解</a>
+      
+    </div>
+    <div class="text">考虑分块，每 $\sqrt n$ 个元素分成一块，每个块内维护 $cnt(b,i)$ 表示 $i$ 这个数在 $b$ 号块中出现了几次，维护 $dq(b)$ 用一个 &#x60;deque&#x60; 表示出 $b$ 号块内的所有元素。
+
+对于 $1$ 操作，如果 $l$ 与 $r$ 在同一个块里，直接暴力去做即可。如果不在，则将最后一个元素 insert 进第一个元素所在的块中，接着 $(bl_l,bl_r]$ 之间的所有块，把上一个块的最后一个元素移到当前块中，并更新 $cnt$ 值。以保证块内元素数仍为 $\sqrt n</div>
+  </article>
+  
+  <article>
+    <header><a href="/post/solution-brackets.html">brackets 题解</a></header>
+    <div class="tags">
+      
+      <a href="##" class="tag">题解</a>
+      
+    </div>
+    <div class="text">考虑到最优构造方案一定是把所有括号序列尽可能的构造成 &#x60;()&#x60;，考虑贪心，对于每一个左括号，寻找到它后面未被匹配的第一个右括号，进行匹配即可。
+
+在整个串都匹配完成后，如果得到的 &#x60;()&#x60; 串组数 $\ge m$，则说明有合法的构造方案，否则说明没有。
+
+至于时间复杂度，如果你是对于每个左括号，暴力寻找它右边的第一个没匹配的右括号，则复杂度为 $O(Tn^2)$。当然，你也可以使用一个 &#x60;queue&#x60; 来将复杂度优化为 $O(n)$，但是介于此题的数据范围，没有优化的必要。
+
+&#x60;&#x60;&#x60;cpp
+char s[1</div>
+  </article>
+  
+  <article>
+    <header><a href="/post/solution-cf1567a.html">CF1567A 题解</a></header>
+    <div class="tags">
+      
+      <a href="##" class="tag">题解</a>
+      
+    </div>
+    <div class="text">## 题目翻译
+
+一个 $2$ 行 $n$ 列的网格，用 $n$ 个 $1\times2$ 大小的多米诺骨牌完全覆盖在这个网格上，可以水平或竖直放置。给出其中的一行的放置情况，问另一行的放置情况。如有多种可能方案则任意输出一种。
+
+## 大体思路
+
+如果上边一排放了一个上半部分的骨牌，则下面一排就要放一个下半部分的。反之同理。对于剩下的位置交替地放置左右朝向的骨牌即可。
+
+&#x60;&#x60;&#x60;cpp
+signed main() {
+  re (_, in()) {
+    in(n)(s + 1);
+    re (i,</div>
+  </article>
+  
+  <article>
+    <header><a href="/post/solution-cf1567e.html">CF1567E 题解</a></header>
+    <div class="tags">
+      
+      <a href="##" class="tag">题解</a>
+      
+    </div>
+    <div class="text">## 题目大意
+
+单点修改，区间严格不降子区间计数。
+
+## 简要做法
+
+考虑分块，每个块内维护所有极大不降区间的两个端点。这样一个长度为 $L$ 的极大不降区间的对答案的贡献就为 $\sum_{i=1}^L i$。
+
+对于单点修改，直接暴力重构整个块。
+
+比较麻烦的是块与块之间的拼接，我们可以记录「最后一个遍历到的区间」是什么，然后在遍历到一个新块时判断这个块的第一个元素是否大于等于上一个块的最后一个元素，如果是则可以将这个块的第一个极大区间和「最后一个遍历到的区间」进行合并。
+
+时间复杂度 $O(n+q</div>
+  </article>
+  
+  <article>
+    <header><a href="/post/solution-race.html">race 题解</a></header>
+    <div class="tags">
+      
+      <a href="##" class="tag">题解</a>
+      
+    </div>
+    <div class="text">由于题目中规定 $b\le c\le a$，我们可以得出一个性质：最大得分策略 A 输的场数不大于 $1$。对于这个性质，这里有一个简单的证明：
+
+若 A 输的场数为 $k(k&gt;1)$​​，这几局中 A 与 B 的比分分别为 $(a_1,b_1),(a_2,b_2),\cdots,(a_k,b_k)$。我们可以将这些同为输的场次合并为一场，即 $(a_1+a_2+\cdots+a_k,b_1+b_2+\cdots+b_k)$。而剩下的 $k-1$ 场为零比零平局。由于题目保证 $b\le c$，所以合并后的</div>
+  </article>
+  
+  <article>
+    <header><a href="/post/solution-cf1553a.html">CF1553A 题解</a></header>
+    <div class="tags">
+      
+      <a href="##" class="tag">题解</a>
+      
+    </div>
+    <div class="text">## 题目大意
+
+定义 $S(x)$ 为十进制数字 $x$ 中每一位的数字之和。求出 $[1,n]$ 之间有多少个整数 $i$ 满足 $S(i)&gt;S(i+1)$。
+
+## 大体思路
+
+可以发现，如果 $i+1$ 在做加法的过程中出现了进位，则 $S(i+1)$ 的值会比 $S(i)$ 的值小。也就是说，如果 $i$ 的末尾数字为 $9$，则 $i$ 就符合条件。题目就转化为「求出 $[1,n]$ 之间有多少个整数的个位为 $9$」。答案显而易见为 $\lfloor \dfrac{n+1} {10}\rflo</div>
+  </article>
+  
+  <article>
+    <header><a href="/post/solution-cf690a2.html">CF690A2 题解</a></header>
+    <div class="tags">
+      
+      <a href="##" class="tag">题解</a>
+      
+    </div>
+    <div class="text">考虑有 $0$ 个金币时哪些人会存活。$1$ 号、$2$ 号显然存活，$3$ 号会被 $1,2$ 反对所以无法存活，$4$ 号会获得 $3$ 的赞同票所以可以存活。可以发现，存活的人是 $1,2,4,8,\cdots$。
+
+有 $1$ 个金币时，$1,2,3,4$ 显然存活，$5$ 无法获得多于 $2$ 个选票所以无法存活，$6$ 会获得 $5$ 的赞同票所以可以存活。可以发现，存活的人是 $1,2,3,4,6,10\cdots$。
+
+所以得出结论，有 $B$ 个金币时，存活的人的集合是 $\{1,2,3,</div>
+  </article>
+  
+  <article>
+    <header><a href="/post/solution-rbt.html">RBT 题解</a></header>
+    <div class="tags">
+      
+      <a href="##" class="tag">题解</a>
+      
+    </div>
+    <div class="text">预处理 DFS 序 $\operatorname{dfn}(i)$ 和每个节点的子树中 DFS 序最大值 $\operatorname{low}(i)$，将树上问题转化为序列问题。我们可以把「出现次数为奇数」转化为异或操作，考虑分块，在每个块内维护一个 &#x60;bitset&#x60;，每一个二进制位代表 $[0,p)$ 范围内的一个整数，维护块内异或和即可。
+
+- 对于 $1$ 操作，我们可以将 &#x60;bitset&#x60; 整体左移 $v$ 位，对于大于 $p$ 位的部分截断并移至最低位。
+- 对于 $2$ 操作，直接暴力重构整个</div>
+  </article>
+  
+  <article>
+    <header><a href="/post/solution-p7694.html">P7694 题解</a></header>
+    <div class="tags">
+      
+      <a href="##" class="tag">题解</a>
+      
+    </div>
+    <div class="text">严格一行 Python 3。
+
+&#x60;&#x60;&#x60;python
+for i in [i if i.isupper() else &quot;&quot; for i in input()]:print(i,end=&quot;&quot;)
+&#x60;&#x60;&#x60;
+
+由于「每一个长变体中的单词开头一定是大写字母」，我们可以用列表生成式「筛选」出输入字符串中的所有大写字母，遍历输出即可。</div>
+  </article>
+  
+  <article>
+    <header><a href="/post/solution-at4142.html">AT4142 题解</a></header>
+    <div class="tags">
+      
+      <a href="##" class="tag">题解</a>
+      
+    </div>
+    <div class="text">作为一个不会双指针的蒟蒻，我们考虑用二分来做这道题。
+
+由于异或运算相当于二进制不进位加法，所以对于两个正整数 $a,b$，一定有 $a\oplus b \le a+b$。同时由于异或满足交换律和结合律，我们可以用类似前缀和的方法预处理出「前缀异或」。
+
+由于「异或运算相当于二进制不进位加法」，我们可以得出一个结论：如果
+$$
+\sum_{i=l}^ra_i=\bigoplus_{i=l}^ra_i(l&lt;r),
+$$
+则一定满足
+$$
+\sum_{i=l}^{r-1}a_i=\bigoplus_{i=l}^</div>
+  </article>
+  
+  <article>
+    <header><a href="/post/solution-p7611.html">P7611 题解</a></header>
+    <div class="tags">
+      
+      <a href="##" class="tag">题解</a>
+      
+    </div>
+    <div class="text">考虑乱搞，每次从 $[0,2000]$ 里面随机一个整数检查是否符合条件。对于每组数据，设置时限 $0.1s$。在超时之前不断生成随机数并检查答案，如果到了 $0.1s$ 仍然没有找到符合要求的 $n$ 就输出无解。
+
+&#x60;&#x60;&#x60;python
+import math
+import random
+import time
+T = int(input())
+for _ in range(T):
+    a, b, c = [int(i)for i in input().split()]
+    fl = False
+</div>
+  </article>
+  
+  <article>
+    <header><a href="/post/solution-cf97c.html">CF97C 题解</a></header>
+    <div class="tags">
+      
+      <a href="##" class="tag">题解</a>
+      
+    </div>
+    <div class="text">今天模拟赛正好出了这道题，分享一种考场上写的做法。
+
+考虑每种操作所能增加或减少多少个还能参加一次比赛的人数，我们设第 $i$ 种操作所增加的人数为 $b_i$，则：
+$$
+b_i=\begin{cases}n&amp;i=1\\b_{i-1}-2 &amp;\text{otherwise}.\end{cases}
+$$
+分析样例可得，最优策略一定是一个 $b_i&gt;0$ 的 $i$ 操作和一个 $b_j&lt;0$ 的 $j$ 操作不断交替，然后一直循环下去。根据贪心思想，因为数据保证 $p_i&lt;p_j$，我们要让 $j$ 操作</div>
+  </article>
+  
+  <article>
+    <header><a href="/post/solution-p7678.html">P7678 题解</a></header>
+    <div class="tags">
+      
+      <a href="##" class="tag">题解</a>
+      
+    </div>
+    <div class="text">严格一行 Python 3。
+
+&#x60;&#x60;&#x60;python
+print(len(input().strip().replace(&#x27;c=&#x27;,&#x27;W&#x27;).replace(&#x27;c-&#x27;,&#x27;Y&#x27;).replace(&#x27;dz=&#x27;,&#x27;F&#x27;).replace(&#x27;d-&#x27;,&#x27;A&#x27;).replace(&#x27;lj&#x27;,&#x27;K&#x27;).replace(&#x27;nj&#x27;,&#x27;I&#x27;).replace(&#x27;s=&#x27;,&#x27;O&#x27;).replace(&#x27;z=&#x27;,&#x27;I&#x27;)))
+&#x60;&#x60;&#x60;
+
+说下原理：Python 的 &#x60;s.replace(a,b)&#x60; 函数能将源字符串 &#x60;s&#x60; 中的所有子串 &#x60;</div>
+  </article>
+  
+  <article>
+    <header><a href="/post/solution-acp.html">ACP 题解</a></header>
+    <div class="tags">
+      
+      <a href="##" class="tag">题解</a>
+      
+    </div>
+    <div class="text">## Task 1
+
+交换 $a,b$ 两数。
+
+三次异或解决。
+
+&#x60;&#x60;&#x60;cpp
+void Swap() { Xor(1), Xor(0), Xor(1); }
+&#x60;&#x60;&#x60;
+
+## Task 2
+
+求 $a-b$，自然溢出。
+
+由于负数在计算机内部以补码存储，所以 $a-b=a+(-b)=a+ (\sim b+1)$。这个问题就被转化成了 A+B Problem。我们可通过异或和与运算来模拟二进制进位加法。由于本题的整数是 $64$ 位的，所以我们最多进位 $64$ 次。
+
+&#x60;&#x60;&#x60;cpp
+void Add(in</div>
+  </article>
+  
+  <article>
+    <header><a href="/post/solution-p7666.html">P7666 题解</a></header>
+    <div class="tags">
+      
+      <a href="##" class="tag">题解</a>
+      
+    </div>
+    <div class="text">本题解修改于 @uliahradri 大佬的（未通过）题解。
+
+## 题目大意
+
+有 $n$ 个点，用 $k$ 个区间覆盖这些点且使区间长度和最小。
+
+## 解题思路
+
+随便手玩一下样例，画个图，可以发现这些区间之间存在 $k-1$ 个空。
+
+而有 $n$ 个点，所以共有 $n-1$ 个空，点 $i$ 和点 $i+1$ 之间的空的长度为 $t_{i+1}-t_{i}-1$。
+
+贪心地想，我们找到前 $k-1$ 大的空，那么答案就是 $t_n-t_1+1$ 再减去这 $k-1$ 个空的长度，找前 $k-1$ </div>
+  </article>
+  
+  <article>
+    <header><a href="/post/solution-sp1526.html">SP1526 题解</a></header>
+    <div class="tags">
+      
+      <a href="##" class="tag">题解</a>
+      
+    </div>
+    <div class="text">[~~双倍经验。~~](https://www.luogu.com.cn/problem/P7650)
+
+## 题目大意
+
+给你一个排列 $p_i$，每次可以将第 $i$ 个元素移到第 $j$ 个位置，花费 $i+j$ 的代价，问最少花费多少代价将这个排列变成 $1\sim n$ 的排列。
+
+## 大体思路
+
+对于一个数字 $i$，设它现在的下标为 $p_i$。它要移动到正确的位置（即数字 $i+1$ 的前面一个位置），有两种方式：用一次操作将它「主动」移过去，或者把 $[p_i+1\sim p_{i+1}</div>
+  </article>
+  
+  <article>
+    <header><a href="/post/solution-p7650.html">P7650 题解</a></header>
+    <div class="tags">
+      
+      <a href="##" class="tag">题解</a>
+      
+    </div>
+    <div class="text">## 题目大意
+
+给你一个排列 $p_i$，每次可以将第 $i$ 个元素移到第 $j$ 个位置，花费 $i+j$ 的代价，问最少花费多少代价将这个排列变成 $1\sim n$ 的排列。
+
+## 大体思路
+
+对于一个数字 $i$，设它现在的下标为 $p_i$。它要移动到正确的位置（即数字 $i+1$ 的前面一个位置），有两种方式：用一次操作将它「主动」移过去，或者把 $[p_i+1\sim p_{i+1}-1]$ 之间的数字全部移走，让这个数「被动」跑到这个位置。如果 $p_i&lt;p_{i+1}$，则用两种方式</div>
+  </article>
+  
+  <article>
+    <header><a href="/post/solution-vsq.html">VSQ 题解</a></header>
+    <div class="tags">
+      
+      <a href="##" class="tag">题解</a>
+      
+    </div>
+    <div class="text">## 题目大意
+
+维护一个零一串，要求支持区间推平、区间反转，求区间最大零一交替子串长度和长度为 $k$ 的零一交替子串计数。
+
+## Subtask 1
+
+暴力遍历数组并修改 / 查询即可，复杂度 $O(nm)$。
+
+## Subtask 2
+
+留给莫队及一些玄学做法，代码略。
+
+## Subtask 3
+
+考虑分块。每块维护**块内**最长的「VS 串」的长度 $(lzmx)$、块左侧的极大「VS 串」长度 $(lzl)$、块右侧的极大「VS 串」长度 $(lzr)$、块内第一个数是什么 $(l1)$、</div>
+  </article>
+  
+  <article>
+    <header><a href="/post/solution-cf1514b.html">CF1514B 题解</a></header>
+    <div class="tags">
+      
+      <a href="##" class="tag">题解</a>
+      
+    </div>
+    <div class="text">最佳情况是 $n$ 个数的 $k$ 个二进制位中，每一位都是 $n-1$ 个数为 $1$，$1$ 个为 $0$。
+
+那么问题就变成了：一共有 $k$ 个位置，每个位置都要选一个 $1\sim n$ 的数，问有多少选择方案。答案为 $n^k$，快速幂计算即可。
+
+复杂度：$O(\log k)$。
+
+### Code:
+
+&#x60;&#x60;&#x60;cpp
+#define int ll
+
+ll pow(ll a,ll b,const ll&amp;m) {
+	ll res=1;a%=m;
+	while(b&gt;0) {
+		if(b&amp;1)res</div>
+  </article>
+  
+  <article>
+    <header><a href="/post/solution-p7514.html">P7514 题解</a></header>
+    <div class="tags">
+      
+      <a href="##" class="tag">题解</a>
+      
+    </div>
+    <div class="text">说一下我在考场上写的思路，不一定正确。
+
+首先，最优策略一定是翻按照正面数字正序排序后的前后缀。
+
+所以，我们可以预处理出只翻第 $1,1 \sim 2,1\sim3,\cdots,1\sim m$ 张牌（即前 $m$ 张）的最大最小值 $LMax(i),LMin(i)$，以及只翻第 $n,n-1\sim n,n -2\sim n,\cdots,n-m+1 \sim n$ 张牌（即后 $m$ 张牌）的最大最小值 $RMax(i), RMin(i)$。特别的，$LMin(0)=RMin(n+1)=a_{1\t</div>
+  </article>
+  
+  <article>
+    <header><a href="/post/geometry.html">计算几何笔记</a></header>
+    <div class="tags">
+      
+      <a href="##" class="tag">笔记</a>
+      
+    </div>
+    <div class="text"># 计算几何笔记
+
+## EPS 与实数比较
+
+我们在判断两个整数是否相等的时候通常会用等于号直接比较，但是由于浮点数 &#x60;double&#x60; 有精度误差，在比较时，需要允许一定的误差。比如比较浮点数 $a,b$ 是否相等时，如果 $|a-b| \le \mathrm{eps}$，则认为 $a=b$。
+
+&#x60;&#x60;&#x60;cpp
+const double eps = 1e-9; // 对于大部分题目 1e-9 足够小了
+
+bool fsame(double a, double b) { return fabs(a - b) </div>
+  </article>
+  
+  <article>
+    <header><a href="/post/solution-con.html">CON 题解</a></header>
+    <div class="tags">
+      
+      <a href="##" class="tag">题解</a>
+      
+    </div>
+    <div class="text">## subtask 1
+
+全排列暴力即可。
+
+## subtask 2
+
+由于任意两个字符串都没有公共前后缀，所以 $k$ 连串对答案的贡献全部产生在每个串的内部，换句话说，不论按什么顺序排列拼接得到的 $k$ 连串数量都是一样的。任意找一种排列算出答案再乘上 $n!$ 即可。
+
+## subtask 3
+
+每个串只有一个字母，且题目中规定 $k\ge 2$，所以我们只要枚举每种字母，计算在串中有多少种位置可能出现 $k$ 连串，将贡献求和即可。
+
+设当前枚举的字母为 $c$，这 $n$ 个字符串中有 $</div>
+  </article>
+  
+  <article>
+    <header><a href="/post/solution-cf1454d.html">CF1454D 题解</a></header>
+    <div class="tags">
+      
+      <a href="##" class="tag">题解</a>
+      
+    </div>
+    <div class="text">题目大意
+---
+
+共 $t (t\le 5000)$ 组数据,
+对于每组数据输入一个整数 $n (2 \le n \le 10^{10})$
+请构造一个长度为 $k$ 的数列 $a$, 满足以下条件:
+
+- $\forall i \in a : i &gt; 1$;
+- $\prod_{i=1}^k a_i = n$;
+- $\forall i \in [2,k] : a_i \bmod a_{i-1} = 0$ ;
+- $k$ 尽可能大;
+
+对于每组数据第一行输出一个整数 $k$,
+第二行输出 $k$ 个整数</div>
+  </article>
+  
+  <article>
+    <header><a href="/post/solution-cf1454b.html">CF1454B 题解</a></header>
+    <div class="tags">
+      
+      <a href="##" class="tag">题解</a>
+      
+    </div>
+    <div class="text">题目大意
+---
+
+共 $t (t\le2\times10^4)$ 组数据,
+对于每组数据输入一个整数 $n (1 \le n \le 10^5)$
+和一个长度为 $n$ 的数组 $a(1\le a_i \le n)$.
+请找到数组中只出现过一次且最小的数**的下标** (从 $1$ 开始),
+如果找不到这样的数则输出 $-1$.
+
+对于所有测试点满足 $\sum_n \le 10^5$.
+
+做法
+--
+
+使用 &#x60;std::vector&#x60; 开桶, 统计每个数字在数组中出现的位置, 然后 $\mathcal </div>
+  </article>
+  
+  <article>
+    <header><a href="/post/solution-cf1454a.html">CF1454A 题解</a></header>
+    <div class="tags">
+      
+      <a href="##" class="tag">题解</a>
+      
+    </div>
+    <div class="text">题目大意
+---
+
+共 $t (1\le t\le100)$ 组数据, 对于每组数据输入一个整数 $n (2 \le n \le 100)$,
+输出一个 $1\sim n$ 的排列 $p$ 使得 $p_i \ne i$,
+如果有多种排列可以满足需求则任意输出一种.
+
+做法
+--
+
+我们可以以如下方式生成这个排列:
+
+$$p_i=\begin{cases}
+1 &amp; \text{if }i=n\\
+i + 1 &amp; \text{otherwise}
+\end{cases}$$
+
+Code
+---
+
+&#x60;&#x60;&#x60;cpp
+</div>
+  </article>
+  
+  <article>
+    <header><a href="/post/speed-up-aur-downloading.html">解决 AUR 下载软件包慢的问题</a></header>
+    <div class="tags">
+      
+      <a href="##" class="tag">linux</a>
+      
+    </div>
+    <div class="text">&#x60;yay&#x60; 在安装 AUR 源的软件时会自动调用 &#x60;makepkg&#x60; 来打包软件包，而 &#x60;/etc/makepkg.conf&#x60; 是 &#x60;makepkg&#x60; 的配置文件，这个文件默认长这个样子（节选）：
+
+&#x60;&#x60;&#x60;yaml
+# ...
+#-- The download utilities that makepkg should use to acquire sources
+#  Format: &#x27;protocol::agent&#x27;
+DLAGENTS=(&#x27;file::/usr/bin/curl -gqC - -o %o</div>
+  </article>
+  
+  <article>
+    <header><a href="/post/solution-cf1445a.html">CF1445A 题解</a></header>
+    <div class="tags">
+      
+      <a href="##" class="tag">题解</a>
+      
+    </div>
+    <div class="text">题目思路
+---
+
+使用二分法, 首先将 $a, b$ 扔进两个 &#x60;std::multiset&#x60; 里.
+
+因为要满足的条件是 $a_i + b_i \le x$, 即 $b_i \le x - a_i$,
+我们可以遍历 $a$,
+每次找到 $b$ 中最后一个 $\le x - a_i$ 的值,
+并将其删除,
+如果找不到这样的一个值, 说明无解.
+
+时间复杂度 $\mathcal O (t \cdot n \log n^2)$
+
+注意
+---
+
+- 由于原数组中元素可重, 所以不能用 &#x60;set&#x60;, 要用 &#x60;m</div>
+  </article>
+  
+  <article>
+    <header><a href="/post/solution-cf1436b.html">CF1436B 题解</a></header>
+    <div class="tags">
+      
+      <a href="##" class="tag">题解</a>
+      
+    </div>
+    <div class="text">刚开始做这道题的时候, 我是没有任何思路, 直到出题人发送了这样一条提示:
+
+&gt; I just want to remind you that:
+&gt;
+&gt; Smallest non-negative integers are $0, 1, 2, 3, \cdots$
+&gt;
+&gt; Smallest prime numbers are $2, 3, 5, 7, \cdots$
+
+我这才意识到, 组成质方的数是 *非负数* 而并非整数, 即可以用 $0$.
+那这题就变简单了, 我们可以只用 $0$ 和 $1$ 来填充这</div>
   </article>
   
 </section>

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VSQ 题解</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/purecss@2.0.6/build/pure-min.css"
+      integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5"
+      crossorigin="anonymous"
+    />
+    <link
+      href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/grids-responsive-min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/katex@0.15.1/dist/katex.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/highlight.js@11.3.1/styles/atom-one-light.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/github-markdown-css@5.1.0/github-markdown-light.css"
+    />
+  <script defer src="../js/post.b40d710.js"></script><script defer src="../js/post/solution-vsq.7599556.js"></script><link href="../css/post-solution-vsq.7c10b3d.css" rel="stylesheet"></head>
+
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="#">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
+    <div id="wrap">
+      <div id="sidebar" class="pure-menu">
+  <a class="pure-menu-heading" href="/index.html">yzy1</a>
+  <ul class="pure-menu-list">
+    <li class="pure-menu-item">
+      <a href="/index.html" class="pure-menu-link"><i class="fa fa-home"></i>博客</a>
+    </li>
+    <li class="pure-menu-item">
+      <a href="/index.html" class="pure-menu-link"><i class="fa fa-tags"></i>标签</a>
+    </li>
+    <li class="pure-menu-item">
+      <a href="/index.html" class="pure-menu-link"><i class="fa fa-file-code-o"></i>模板</a>
+    </li>
+    <li class="pure-menu-item menu-item-divided">
+      <a href="/index.html" class="pure-menu-link"><i class="fa fa-external-link"></i>友链</a>
+    </li>
+    <li class="pure-menu-item">
+      <a href="/about.html" class="pure-menu-link"><i class="fa fa-user"></i>关于</a>
+    </li>
+  </ul>
+</div>
+
+      <div id="main">
+
+<header>
+  <h1>VSQ 题解</h1>
+</header>
+<section class="content">
+  <div class="markdown-body"><h2>题目大意</h2>
+<p>维护一个零一串，要求支持区间推平、区间反转，求区间最大零一交替子串长度和长度为 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span></span> 的零一交替子串计数。</p>
+<h2>Subtask 1</h2>
+<p>暴力遍历数组并修改 / 查询即可，复杂度 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>m</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(nm)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">nm</span><span class="mclose">)</span></span></span></span></span>。</p>
+<h2>Subtask 2</h2>
+<p>留给莫队及一些玄学做法，代码略。</p>
+<h2>Subtask 3</h2>
+<p>考虑分块。每块维护<strong>块内</strong>最长的「VS 串」的长度 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>l</mi><mi>z</mi><mi>m</mi><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(lzmx)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mord mathnormal">m</span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span></span>、块左侧的极大「VS 串」长度 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>l</mi><mi>z</mi><mi>l</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(lzl)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mclose">)</span></span></span></span></span>、块右侧的极大「VS 串」长度 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>l</mi><mi>z</mi><mi>r</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(lzr)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal" style="margin-right:0.02778em;">zr</span><span class="mclose">)</span></span></span></span></span>、块内第一个数是什么 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>l</mi><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(l1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span>、块内最后一个数是什么 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>r</mi><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(r1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span>。</p>
+<ul>
+<li>
+<p>对于 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>∼</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0\sim 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span> 操作，整块打一个推平懒标记，记录该块推平成了什么数，并清空该块上的所有标记；对于散块则暴力修改。</p>
+</li>
+<li>
+<p>对于 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span></span> 操作，整块如果已有推平标记，则将「推平成什么」标记零一反转；整块如果已有反转标记，则撤销反转标记；如果什么标记都没有，则打一个反转懒标记；对于散块则暴力修改。</p>
+</li>
+<li>
+<p>对于 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn></mrow><annotation encoding="application/x-tex">4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4</span></span></span></span></span> 操作，零散块暴力查询。对于整块，如果块 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>B</mi><mi>l</mi></msub></mrow><annotation encoding="application/x-tex">B_l</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0502em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> 与 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>B</mi><mi>r</mi></msub></mrow><annotation encoding="application/x-tex">B_r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0502em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> 相邻，且 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mn>1</mn><mo stretchy="false">(</mo><msub><mi>B</mi><mi>l</mi></msub><mo stretchy="false">)</mo><mo>=</mo><mi>l</mi><mn>1</mn><mo stretchy="false">(</mo><msub><mi>B</mi><mi>r</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">r1(B_l)=l1(B_r)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord">1</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0502em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord">1</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0502em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span>，则我们可以将 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>B</mi><mi>l</mi></msub></mrow><annotation encoding="application/x-tex">B_l</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0502em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> 内部右侧的极大「VS 串」与 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>B</mi><mi>r</mi></msub></mrow><annotation encoding="application/x-tex">B_r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0502em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> 内部左侧的极大「VS 串」拼接在一起形成一个更长的、长度为 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>z</mi><mi>r</mi><mo stretchy="false">(</mo><msub><mi>B</mi><mi>l</mi></msub><mo stretchy="false">)</mo><mo>+</mo><mi>l</mi><mi>z</mi><mi>l</mi><mo stretchy="false">(</mo><msub><mi>B</mi><mi>r</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">lzr(B_l)+lzl(B_r)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal" style="margin-right:0.02778em;">zr</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0502em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0502em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span> 的「VS 串」。综上，<span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>l</mi><mo separator="true">,</mo><mi>r</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[l,r]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mclose">]</span></span></span></span></span> 区间内的最长「VS 串」可能由「块内部的串」或「两个或多个块边界上的串拼接」得到，分别计算这两种情况即可。</p>
+</li>
+</ul>
+<p>复杂度 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><msqrt><mi>n</mi></msqrt><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n\sqrt n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0503em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8003em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="padding-left:0.833em;">n</span></span><span style="top:-2.7603em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2397em;"><span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span>。</p>
+<pre><code class="hljs language-cpp"><span class="hljs-comment">// lzmx: 块内 (lbl ~ rbl) 最多连续 01 是多少个</span>
+<span class="hljs-comment">// lzl: 块左端连续 01 是多少个</span>
+<span class="hljs-comment">// lzr: 块右端连续 01 是多少个</span>
+<span class="hljs-comment">// l1: 块的第一个元素是什么</span>
+<span class="hljs-comment">// r1: 块的倒数第一个元素是什么</span>
+<span class="hljs-type">int</span> bl[N], lbl[N], rbl[N], a[N], sz, n, m, fil[B], rev[B];
+<span class="hljs-type">int</span> lzmx[B], lzl[B], lzr[B], l1[B], r1[B];
+
+<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Down</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>{
+  <span class="hljs-type">int</span> b = bl[x];
+  <span class="hljs-built_in">assert</span>((fil[b] != <span class="hljs-number">-1</span>) + rev[b] &#x3C;= <span class="hljs-number">1</span>);  <span class="hljs-comment">// 同时只能一个标记</span>
+  <span class="hljs-keyword">if</span> (fil[b] != <span class="hljs-number">-1</span>) {
+    <span class="hljs-built_in">rep</span>(i, lbl[x], rbl[x]) a[i] = fil[b];
+  }
+  <span class="hljs-keyword">if</span> (rev[b]) {
+    <span class="hljs-built_in">rep</span>(i, lbl[x], rbl[x]) a[i] ^= <span class="hljs-number">1</span>;
+  }
+  fil[b] = <span class="hljs-number">-1</span>, rev[b] = <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Up</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>{
+  <span class="hljs-type">int</span> b = bl[x];
+  l1[b] = a[lbl[x]];
+  r1[b] = a[rbl[x]];
+  <span class="hljs-comment">// 计算 lzmx</span>
+  lzmx[b] = <span class="hljs-number">1</span>;
+  <span class="hljs-type">int</span> res = <span class="hljs-number">1</span>;
+  <span class="hljs-built_in">rep</span>(i, lbl[x], rbl[x] - <span class="hljs-number">1</span>) {
+    <span class="hljs-keyword">if</span> (a[i] != a[i + <span class="hljs-number">1</span>])
+      ++res;
+    <span class="hljs-keyword">else</span> {
+      <span class="hljs-built_in">up</span>(lzmx[b], res), res = <span class="hljs-number">1</span>;
+    }
+  }
+  <span class="hljs-built_in">up</span>(lzmx[b], res);
+  <span class="hljs-comment">// 计算 lzl &#x26; lzr</span>
+  lzl[b] = lzr[b] = <span class="hljs-number">1</span>;
+  <span class="hljs-built_in">rep</span>(i, lbl[x], rbl[x] - <span class="hljs-number">1</span>) {
+    <span class="hljs-keyword">if</span> (a[i] != a[i + <span class="hljs-number">1</span>])
+      ++lzl[b];
+    <span class="hljs-keyword">else</span>
+      <span class="hljs-keyword">break</span>;
+  }
+  <span class="hljs-built_in">per</span>(i, rbl[x], lbl[x] + <span class="hljs-number">1</span>) {
+    <span class="hljs-keyword">if</span> (a[i] != a[i - <span class="hljs-number">1</span>])
+      ++lzr[b];
+    <span class="hljs-keyword">else</span>
+      <span class="hljs-keyword">break</span>;
+  }
+}
+
+<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Fil</span><span class="hljs-params">(<span class="hljs-type">int</span> l, <span class="hljs-type">int</span> r, <span class="hljs-type">int</span> x)</span> </span>{
+  <span class="hljs-keyword">if</span> (bl[l] == bl[r]) {
+    <span class="hljs-built_in">Down</span>(l);
+    <span class="hljs-built_in">rep</span>(i, l, r) a[i] = x;
+    <span class="hljs-built_in">Up</span>(l);
+    <span class="hljs-keyword">return</span>;
+  }
+  <span class="hljs-built_in">Fil</span>(l, rbl[l], x);
+  <span class="hljs-built_in">rep</span>(i, bl[l] + <span class="hljs-number">1</span>, bl[r] - <span class="hljs-number">1</span>) fil[i] = x, rev[i] = <span class="hljs-number">0</span>,
+                               lzmx[i] = lzl[i] = lzr[i] = <span class="hljs-number">1</span>, l1[i] = r1[i] = x,
+                               lzs[i].<span class="hljs-built_in">clear</span>(), lzhzh[i].<span class="hljs-built_in">clear</span>();
+  <span class="hljs-built_in">Fil</span>(lbl[r], r, x);
+}
+
+<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Rev</span><span class="hljs-params">(<span class="hljs-type">int</span> l, <span class="hljs-type">int</span> r)</span> </span>{
+  <span class="hljs-keyword">if</span> (bl[l] == bl[r]) {
+    <span class="hljs-built_in">Down</span>(l);
+    <span class="hljs-built_in">rep</span>(i, l, r) a[i] ^= <span class="hljs-number">1</span>;
+    <span class="hljs-built_in">Up</span>(l);
+    <span class="hljs-keyword">return</span>;
+  }
+  <span class="hljs-built_in">Rev</span>(l, rbl[l]);
+  <span class="hljs-built_in">rep</span>(i, bl[l] + <span class="hljs-number">1</span>, bl[r] - <span class="hljs-number">1</span>) {
+    <span class="hljs-comment">// 这个块之前被填充过</span>
+    <span class="hljs-comment">// 一个块上最多打一种标记</span>
+    <span class="hljs-keyword">if</span> (fil[i] != <span class="hljs-number">-1</span>) {
+      fil[i] ^= <span class="hljs-number">1</span>;
+    } <span class="hljs-keyword">else</span> {
+      <span class="hljs-comment">// 打上翻转标记</span>
+      rev[i] ^= <span class="hljs-number">1</span>;
+    }
+    <span class="hljs-comment">// lz、lzmx、lzl、lzr、lzs、lzhzh 不变</span>
+    l1[i] ^= <span class="hljs-number">1</span>, r1[i] ^= <span class="hljs-number">1</span>;
+  }
+  <span class="hljs-built_in">Rev</span>(lbl[r], r);
+}
+
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">Ask2</span><span class="hljs-params">(<span class="hljs-type">int</span> l, <span class="hljs-type">int</span> r)</span> </span>{
+  <span class="hljs-keyword">if</span> (bl[l] == bl[r]) {
+    <span class="hljs-built_in">Down</span>(l);
+    <span class="hljs-type">int</span> res = <span class="hljs-number">1</span>, mx = <span class="hljs-number">1</span>;
+    <span class="hljs-built_in">rep</span>(i, l, r - <span class="hljs-number">1</span>) {
+      <span class="hljs-keyword">if</span> (a[i] != a[i + <span class="hljs-number">1</span>])
+        ++res;
+      <span class="hljs-keyword">else</span>
+        <span class="hljs-built_in">up</span>(mx, res), res = <span class="hljs-number">1</span>;
+    }
+    <span class="hljs-built_in">up</span>(mx, res);
+    <span class="hljs-keyword">return</span> mx;
+  }
+  <span class="hljs-type">int</span> mx = <span class="hljs-built_in">Ask2</span>(l, rbl[l]), tail = <span class="hljs-built_in">min</span>(lzr[bl[l]], rbl[l] - l + <span class="hljs-number">1</span>);
+  <span class="hljs-built_in">rep</span>(i, bl[l] + <span class="hljs-number">1</span>, bl[r] - <span class="hljs-number">1</span>) {
+    <span class="hljs-built_in">up</span>(mx, lzmx[i]);
+    <span class="hljs-comment">// 不能拼接</span>
+    <span class="hljs-keyword">if</span> (r1[i - <span class="hljs-number">1</span>] == l1[i]) tail = <span class="hljs-number">0</span>;
+    tail += lzl[i], <span class="hljs-built_in">up</span>(mx, tail);
+    <span class="hljs-comment">// 没有整块全是 VS 串</span>
+    <span class="hljs-keyword">if</span> (lzl[i] != sz) tail = lzr[i];
+  }
+  <span class="hljs-keyword">if</span> (r1[bl[r] - <span class="hljs-number">1</span>] == l1[bl[r]]) tail = <span class="hljs-number">0</span>;
+  tail += <span class="hljs-built_in">min</span>(lzl[bl[r]], r - lbl[r] + <span class="hljs-number">1</span>), <span class="hljs-built_in">up</span>(mx, tail);
+  <span class="hljs-built_in">up</span>(mx, <span class="hljs-built_in">Ask2</span>(lbl[r], r));
+  <span class="hljs-keyword">return</span> mx;
+}
+</code></pre>
+<h2>Subtask 4</h2>
+<p>由于本 subtask 的特殊性，此 subtask 内的数据会出现大量推平操作、我们可以使用 ODT 等玄学数据结构达到 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n\log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></span> 的复杂度。代码实现类似 subtask 1，暴力扫一遍即可。</p>
+<h2>Subtask 5</h2>
+<p>由于 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">k=3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">3</span></span></span></span></span>，问题变成了「求有多少个位置 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span></span></span></span></span> 满足 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mrow><mi>p</mi><mo>−</mo><mn>1</mn></mrow></msub><mo mathvariant="normal">≠</mo><msub><mi>a</mi><mi>p</mi></msub></mrow><annotation encoding="application/x-tex">a_{p-1} \ne a_p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9805em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">p</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel"><span class="mrel"><span class="mord vbox"><span class="thinbox"><span class="rlap"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="inner"><span class="mord"><span class="mrel"></span></span></span><span class="fix"></span></span></span></span></span><span class="mrel">=</span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7167em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span></span> 且 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mrow><mi>p</mi><mo>+</mo><mn>1</mn></mrow></msub><mo mathvariant="normal">≠</mo><msub><mi>a</mi><mi>p</mi></msub></mrow><annotation encoding="application/x-tex">a_{p+1}\ne a_p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9805em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">p</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel"><span class="mrel"><span class="mord vbox"><span class="thinbox"><span class="rlap"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="inner"><span class="mord"><span class="mrel"></span></span></span><span class="fix"></span></span></span></span></span><span class="mrel">=</span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7167em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span></span>」。和 subtask 3 类似，考虑分块，我们额外维护几个标记：</p>
+<ul>
+<li>标记 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>z</mi><mo stretchy="false">(</mo><msub><mi>B</mi><mi>x</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">lz(B_x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0502em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">x</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span> 表示 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>−</mo><mn>1</mn><mo separator="true">,</mo><mi>p</mi><mo separator="true">,</mo><mi>p</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">p-1,p,p+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">p</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span> 全在 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>B</mi><mi>x</mi></msub></mrow><annotation encoding="application/x-tex">B_x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0502em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">x</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> 块内的符合要求的位置 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span></span></span></span></span> 总数。</li>
+<li>标记 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mn>2</mn><mo stretchy="false">(</mo><msub><mi>B</mi><mi>x</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">l2(B_x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord">2</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0502em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">x</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span> 表示块内从左往右数第二个元素是什么。</li>
+<li>标记 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mn>2</mn><mo stretchy="false">(</mo><msub><mi>B</mi><mi>x</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">r2(B_x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord">2</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0502em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">x</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span> 表示块内从右往左数第二个（即倒数第二个）元素是什么。</li>
+</ul>
+<p>对于两种修改操作，我们也需要进行更改：</p>
+<ul>
+<li>对于推平操作，块内 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>z</mi></mrow><annotation encoding="application/x-tex">lz</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span></span></span></span></span> 变为零。</li>
+<li>对于反转操作，块内 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>z</mi></mrow><annotation encoding="application/x-tex">lz</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span></span></span></span></span> 不变。</li>
+</ul>
+<p>查询时只要将个块内 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>z</mi></mrow><annotation encoding="application/x-tex">lz</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span></span></span></span></span> 累加，然后计算两块相接处的位置对答案的贡献即可，复杂度 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><msqrt><mi>n</mi></msqrt><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n\sqrt n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0503em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8003em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="padding-left:0.833em;">n</span></span><span style="top:-2.7603em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2397em;"><span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span>。</p>
+<pre><code class="hljs language-cpp"><span class="hljs-comment">// 检查是否构成 010 / 101</span>
+<span class="hljs-comment">// 前两个元素在当前的块里，后一个在右边的块里</span>
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">bool</span> <span class="hljs-title">Check21</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>{
+	<span class="hljs-type">int</span> b1 = bl[x], b2 = bl[x] + <span class="hljs-number">1</span>;
+	<span class="hljs-keyword">return</span> r1[b1] != r2[b1] &#x26;&#x26; r1[b1] != l1[b2];
+}
+
+<span class="hljs-comment">// 检查是否构成 010 / 101</span>
+<span class="hljs-comment">// 前一个元素在当前的块里，后两个在右边的块里</span>
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">bool</span> <span class="hljs-title">Check12</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>{
+	<span class="hljs-type">int</span> b1 = bl[x], b2 = bl[x] + <span class="hljs-number">1</span>;
+	<span class="hljs-keyword">return</span> l1[b2] != r1[b1] &#x26;&#x26; l1[b2] != l2[b2];
+}
+
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">Ask1</span><span class="hljs-params">(<span class="hljs-type">int</span> l, <span class="hljs-type">int</span> r)</span> </span>{
+	<span class="hljs-type">int</span> res = <span class="hljs-number">0</span>;
+	<span class="hljs-keyword">if</span> (bl[l] == bl[r] || l >= r) {
+		<span class="hljs-built_in">Down</span>(l);
+		<span class="hljs-comment">// 如果询问块的左边界，需要加上前一个块的 Check12</span>
+		<span class="hljs-keyword">if</span> (l != <span class="hljs-number">1</span> &#x26;&#x26; l == lbl[l]) res += <span class="hljs-built_in">Check12</span>(l - <span class="hljs-number">1</span>), ++l;
+		<span class="hljs-comment">// 如果询问块的右边界，需要加上最后一个块的 Check21</span>
+		<span class="hljs-keyword">if</span> (r != n &#x26;&#x26; r == rbl[r]) res += <span class="hljs-built_in">Check21</span>(r), --r;
+		<span class="hljs-built_in">rep</span> (i, l, r) {
+			<span class="hljs-keyword">if</span> (i > <span class="hljs-number">1</span> &#x26;&#x26; i &#x3C; n &#x26;&#x26; a[i - <span class="hljs-number">1</span>] != a[i] &#x26;&#x26; a[i + <span class="hljs-number">1</span>] != a[i]) {
+				++res;
+			}
+		}
+		<span class="hljs-keyword">return</span> res;
+	}
+	<span class="hljs-comment">// 处理块内部的 010 / 101</span>
+	res += <span class="hljs-built_in">Ask1</span>(l, rbl[l] - <span class="hljs-number">1</span>);
+	<span class="hljs-built_in">rep</span> (i, bl[l] + <span class="hljs-number">1</span>, bl[r] - <span class="hljs-number">1</span>) { res += lz[i]; }
+	res += <span class="hljs-built_in">Ask1</span>(lbl[r] + <span class="hljs-number">1</span>, r);
+	<span class="hljs-comment">// 处理边角</span>
+	<span class="hljs-built_in">ste</span>(i, lbl[l], lbl[r - sz], sz) {
+		res += <span class="hljs-built_in">Check12</span>(i);
+		res += <span class="hljs-built_in">Check21</span>(i);
+	}
+	<span class="hljs-keyword">return</span> res;
+}
+</code></pre>
+<h2>Subtask 6</h2>
+<p>和 subtask 3 类似，考虑分块，我们额外维护几个标记：</p>
+<ul>
+<li>
+<p><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>z</mi><mi>s</mi><mo stretchy="false">(</mo><msub><mi>B</mi><mi>x</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">lzs(B_x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">zs</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0502em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">x</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span> 表示块 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>B</mi><mi>x</mi></msub></mrow><annotation encoding="application/x-tex">B_x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0502em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">x</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> 中的极大 VS 串长度排序后的结果。</p>
+</li>
+<li>
+<p><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>z</mi><mi>h</mi><mi>z</mi><mi>h</mi><mo stretchy="false">(</mo><msub><mi>B</mi><mi>x</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">lzhzh(B_x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mord mathnormal">h</span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mord mathnormal">h</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0502em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">x</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span> 表示 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>z</mi><mi>s</mi><mo stretchy="false">(</mo><msub><mi>B</mi><mi>x</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">lzs(B_x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">zs</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0502em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">x</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span> 的后缀和。</p>
+</li>
+</ul>
+<p>每次查询 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">3</span></span></span></span></span> 操作，我们就可以在每个块内进行二分。复杂度 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><msqrt><mi>n</mi></msqrt><mi>log</mi><mo>⁡</mo><msqrt><mi>n</mi></msqrt><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n \sqrt n \log \sqrt n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0503em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8003em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="padding-left:0.833em;">n</span></span><span style="top:-2.7603em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2397em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8003em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="padding-left:0.833em;">n</span></span><span style="top:-2.7603em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2397em;"><span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span>。</p>
+<pre><code class="hljs language-cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Up</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>{
+  <span class="hljs-type">int</span> b = bl[x];
+  l1[b] = a[lbl[x]];
+  r1[b] = a[rbl[x]];
+  <span class="hljs-comment">// 计算 lzmx &#x26; lzs</span>
+  lzmx[b] = <span class="hljs-number">1</span>;
+  lzs[b].<span class="hljs-built_in">clear</span>();
+  <span class="hljs-type">int</span> res = <span class="hljs-number">1</span>;
+  <span class="hljs-built_in">rep</span>(i, lbl[x], rbl[x] - <span class="hljs-number">1</span>) {
+    <span class="hljs-keyword">if</span> (a[i] != a[i + <span class="hljs-number">1</span>])
+      ++res;
+    <span class="hljs-keyword">else</span> {
+      <span class="hljs-comment">// 只保留长度 >= 3 的</span>
+      <span class="hljs-keyword">if</span> (res >= <span class="hljs-number">3</span>) lzs[b].<span class="hljs-built_in">push_back</span>(res);
+      <span class="hljs-built_in">up</span>(lzmx[b], res), res = <span class="hljs-number">1</span>;
+    }
+  }
+  <span class="hljs-built_in">up</span>(lzmx[b], res);
+  <span class="hljs-keyword">if</span> (res > <span class="hljs-number">1</span>) lzs[b].<span class="hljs-built_in">push_back</span>(res);
+  <span class="hljs-comment">// 计算 lzl &#x26; lzr</span>
+  lzl[b] = lzr[b] = <span class="hljs-number">1</span>;
+  <span class="hljs-built_in">rep</span>(i, lbl[x], rbl[x] - <span class="hljs-number">1</span>) {
+    <span class="hljs-keyword">if</span> (a[i] != a[i + <span class="hljs-number">1</span>])
+      ++lzl[b];
+    <span class="hljs-keyword">else</span>
+      <span class="hljs-keyword">break</span>;
+  }
+  <span class="hljs-built_in">per</span>(i, rbl[x], lbl[x] + <span class="hljs-number">1</span>) {
+    <span class="hljs-keyword">if</span> (a[i] != a[i - <span class="hljs-number">1</span>])
+      ++lzr[b];
+    <span class="hljs-keyword">else</span>
+      <span class="hljs-keyword">break</span>;
+  }
+  <span class="hljs-built_in">sort</span>(lzs[b].<span class="hljs-built_in">begin</span>(), lzs[b].<span class="hljs-built_in">end</span>());
+  <span class="hljs-comment">// 计算 lzhzh</span>
+  lzhzh[b].<span class="hljs-built_in">clear</span>();
+  <span class="hljs-type">int</span> sum = <span class="hljs-number">0</span>;
+  <span class="hljs-built_in">per</span>(i, lzs[b].<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>, <span class="hljs-number">0</span>) {
+    sum += lzs[b][i];
+    lzhzh[b].<span class="hljs-built_in">push_back</span>(sum);
+  }
+  <span class="hljs-built_in">reverse</span>(lzhzh[b].<span class="hljs-built_in">begin</span>(), lzhzh[b].<span class="hljs-built_in">end</span>());
+}
+
+<span class="hljs-comment">// 修改操作省略</span>
+
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">Ask1</span><span class="hljs-params">(<span class="hljs-type">int</span> l, <span class="hljs-type">int</span> r, <span class="hljs-type">int</span> k)</span> </span>{
+  <span class="hljs-keyword">if</span> (bl[l] == bl[r] || l >= r) {
+    <span class="hljs-built_in">Down</span>(l);
+    <span class="hljs-type">int</span> res = <span class="hljs-number">1</span>, cnt = <span class="hljs-number">0</span>;
+    <span class="hljs-built_in">rep</span>(i, l, r - <span class="hljs-number">1</span>) {
+      <span class="hljs-keyword">if</span> (a[i] != a[i + <span class="hljs-number">1</span>]) {
+        ++res;
+        <span class="hljs-keyword">if</span> (res >= k) ++cnt;
+      } <span class="hljs-keyword">else</span>
+        res = <span class="hljs-number">1</span>;
+    }
+    <span class="hljs-keyword">return</span> cnt;
+  }
+  <span class="hljs-type">int</span> cnt = <span class="hljs-built_in">Ask1</span>(l, rbl[l], k), tail = <span class="hljs-built_in">min</span>({lzr[bl[l]], rbl[l] - l + <span class="hljs-number">1</span>, k - <span class="hljs-number">1</span>});
+  <span class="hljs-built_in">rep</span>(i, bl[l] + <span class="hljs-number">1</span>, bl[r] - <span class="hljs-number">1</span>) {
+    <span class="hljs-keyword">auto</span> it = <span class="hljs-built_in">lower_bound</span>(lzs[i].<span class="hljs-built_in">begin</span>(), lzs[i].<span class="hljs-built_in">end</span>(), k);
+    <span class="hljs-keyword">if</span> (it != lzs[i].<span class="hljs-built_in">end</span>())
+      cnt += *(it - lzs[i].<span class="hljs-built_in">begin</span>() + lzhzh[i].<span class="hljs-built_in">begin</span>()) -
+             (lzs[i].<span class="hljs-built_in">end</span>() - it) * (k - <span class="hljs-number">1</span>);
+    <span class="hljs-comment">// 不能拼接</span>
+    <span class="hljs-keyword">if</span> (r1[i - <span class="hljs-number">1</span>] == l1[i]) tail = <span class="hljs-number">0</span>;
+    tail += <span class="hljs-built_in">min</span>(lzl[i], k - <span class="hljs-number">1</span>), cnt += <span class="hljs-built_in">max</span>(<span class="hljs-number">0</span>, tail - k + <span class="hljs-number">1</span>);
+    <span class="hljs-comment">// 没有整块全是 VS 串</span>
+    <span class="hljs-keyword">if</span> (lzl[i] != sz) tail = lzr[i];
+    <span class="hljs-built_in">down</span>(tail, k - <span class="hljs-number">1</span>);
+  }
+  <span class="hljs-keyword">if</span> (r1[bl[r] - <span class="hljs-number">1</span>] == l1[bl[r]]) tail = <span class="hljs-number">0</span>;
+  tail += <span class="hljs-built_in">min</span>({lzl[bl[r]], r - lbl[r] + <span class="hljs-number">1</span>, k - <span class="hljs-number">1</span>}), cnt += <span class="hljs-built_in">max</span>(<span class="hljs-number">0</span>, tail - k + <span class="hljs-number">1</span>);
+  cnt += <span class="hljs-built_in">Ask1</span>(lbl[r], r, k);
+  <span class="hljs-keyword">return</span> cnt;
+}
+</code></pre>
+<p><del>什么？你需要完整代码？把 subtask 3 和 6 的代码拼起来改一改就好了。</del></p></div>
+</section>
+      </div>
+    </div>
+    <script src="https://unpkg.com/jquery@3.6.0/dist/jquery.min.js"></script>
+  </body>
+</html>
+

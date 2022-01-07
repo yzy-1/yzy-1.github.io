@@ -17,6 +17,7 @@ import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
 const __dirname = path.resolve();
+const postChunkPrefix = "post-";
 
 // 获取 src/posts 下的所有 .md 文件
 const posts: { conf?: any; md?: string; html?: string } = glob
@@ -52,7 +53,10 @@ function Entry() {
   entry.index = path.resolve(__dirname, "src/ts/index.ts");
   entry.about = path.resolve(__dirname, "src/ts/about.ts");
   entry = Object.keys(posts).reduce((obj, x) => {
-    obj[x] = { import: path.resolve(__dirname, "src/ts/post.ts"), runtime: "post" };
+    obj[postChunkPrefix + x] = {
+      import: path.resolve(__dirname, "src/ts/post.ts"),
+      runtime: "post",
+    };
     return obj;
   }, entry);
   return entry;
@@ -87,7 +91,7 @@ function Plugins() {
           title: post.conf.title,
           filename: `post/${postId}.html`,
           template: path.resolve(__dirname, "src/post.ejs"),
-          chunks: [postId],
+          chunks: [postChunkPrefix + postId],
           templateParameters: { post: posts[postId] },
         }),
     ),
@@ -101,7 +105,11 @@ const config: webpack.Configuration = {
   devtool: "eval-source-map",
   plugins: Plugins(),
   output: {
-    filename: "js/[name].[contenthash:7].js",
+    filename: (pathData) => {
+      return pathData.chunk?.name?.startsWith(postChunkPrefix)
+        ? `js/post/${pathData.chunk.name.substring(postChunkPrefix.length)}.[contenthash:7].js`
+        : "js/[name].[contenthash:7].js";
+    },
     path: path.resolve(__dirname, "docs"),
   },
   module: {

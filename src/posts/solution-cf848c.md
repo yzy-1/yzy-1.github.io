@@ -1,5 +1,9 @@
-{"title":"CF848C 题解","tags":["题解"],"uptime":1637313401}
 ---
+title: CF848C 题解
+tags: [题解]
+uptime: 1637313401
+---
+
 题解区好像都是 polylog 的解法，我来发一个 $O(n^{\frac 5 3}\log n)$ 的解法。
 
 ## 题目大意
@@ -138,4 +142,3 @@ signed main() {
   return 0;
 }
 ```
-

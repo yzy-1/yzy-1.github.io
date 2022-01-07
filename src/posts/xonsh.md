@@ -1,5 +1,9 @@
-{"title":"Python + Shell = ? | Xonsh 入门","tags":["linux"],"uptime":1638020195}
 ---
+title: Python + Shell = ? | Xonsh 入门
+tags: ["linux"]
+uptime: 1638020195
+---
+
 ## 前言
 
 各位在书写 shell 脚本时有没有遇到过这些不称心之处：
@@ -19,12 +23,12 @@
 Xonsh 是 shell，它兼容一部分常用 bash 语法，如：
 
 $$
-\def{\ba}{\begin{aligned}\dollar}
-\def{\ab}{\end{aligned}\\}
+\def\ba{\begin{aligned}\dollar}
+\def\ab{\end{aligned}\\}
 \newcommand{\B}[1]{{\texttt{#1}}}
-\def{\kw}{\textcolor{#FFAE57}}
-\def{\st}{\textcolor{#BBE67E}}
-\def{\dollar}{\textcolor{#5CCFE6}{\texttt{\$}}\ }
+\def\kw{\textcolor{#FFAE57}}
+\def\st{\textcolor{#BBE67E}}
+\def\dollar{\textcolor{#5CCFE6}{\texttt{\$}}\ }
 \color{#D9D7CE}\colorbox{#212733}{
 $\begin{array}{ll}
 \ba&\B{\kw{cd} home}\ab\\
@@ -37,14 +41,14 @@ $$
 Xonsh 是 Python，它是 Python 3.6+ 的超集，也就是说你可以使用 Python 语言中的 import 等高级语法，如：
 
 $$
-\def{\ba}{\begin{aligned}\dollar}
-\def{\ab}{\end{aligned}\\}
+\def\ba{\begin{aligned}\dollar}
+\def\ab{\end{aligned}\\}
 \newcommand{\B}[1]{{\texttt{#1}}}
-\def{\kw}{\textcolor{#FFAE57}}
-\def{\st}{\textcolor{#BBE67E}}
-\def{\co}{\textcolor{#D4BFFF}}
-\def{\lxl}{{\texttt{\$}}}
-\def{\dollar}{\textcolor{#5CCFE6}\lxl\ }
+\def\kw{\textcolor{#FFAE57}}
+\def\st{\textcolor{#BBE67E}}
+\def\co{\textcolor{#D4BFFF}}
+\def\lxl{{\texttt{\$}}}
+\def\dollar{\textcolor{#5CCFE6}\lxl\ }
 \color{#D9D7CE}\colorbox{#212733}{
 $\begin{array}{ll}
 \ba&\B{\co2 + \co2}\ab\\
@@ -60,15 +64,15 @@ $$
 Xonsh 是 Python 中的 shell。在 Xonsh 里，你可以将 Python 与 shell 命令结合使用，如：
 
 $$
-\def{\ba}{\begin{aligned}\dollar}
-\def{\ab}{\end{aligned}\\}
+\def\ba{\begin{aligned}\dollar}
+\def\ab{\end{aligned}\\}
 \newcommand{\B}[1]{{\texttt{#1}}}
-\def{\kw}{\textcolor{#FFAE57}}
-\def{\st}{\textcolor{#BBE67E}}
-\def{\co}{\textcolor{#D4BFFF}}
-\def{\op}{\textcolor{#80D4FF}}
-\def{\lxl}{{\texttt{\$}}}
-\def{\dollar}{\textcolor{#5CCFE6}\lxl\ }
+\def\kw{\textcolor{#FFAE57}}
+\def\st{\textcolor{#BBE67E}}
+\def\co{\textcolor{#D4BFFF}}
+\def\op{\textcolor{#80D4FF}}
+\def\lxl{{\texttt{\$}}}
+\def\dollar{\textcolor{#5CCFE6}\lxl\ }
 \color{#D9D7CE}\colorbox{#212733}{
 $\begin{array}{ll}
 \ba&\B{len(\op{\lxl(}\kw{curl} -L https://xon.sh\op{)})}\ab\\
@@ -84,15 +88,15 @@ $$
 Xonsh 是 shell 中的 Python。你可以在 Python 中创建一些变量和参数，然后在 shell 命令中使用它们，如：
 
 $$
-\def{\ba}{\begin{aligned}\dollar}
-\def{\ab}{\end{aligned}\\}
+\def\ba{\begin{aligned}\dollar}
+\def\ab{\end{aligned}\\}
 \newcommand{\B}[1]{{\texttt{#1}}}
-\def{\kw}{\textcolor{#FFAE57}}
-\def{\st}{\textcolor{#BBE67E}}
-\def{\co}{\textcolor{#D4BFFF}}
-\def{\op}{\textcolor{#80D4FF}}
-\def{\lxl}{{\texttt{\$}}}
-\def{\dollar}{\textcolor{#5CCFE6}\lxl\ }
+\def\kw{\textcolor{#FFAE57}}
+\def\st{\textcolor{#BBE67E}}
+\def\co{\textcolor{#D4BFFF}}
+\def\op{\textcolor{#80D4FF}}
+\def\lxl{{\texttt{\$}}}
+\def\dollar{\textcolor{#5CCFE6}\lxl\ }
 \color{#D9D7CE}\colorbox{#212733}{
 $\begin{array}{ll}
 \ba&\B{var = \st{'he'} + \st{'llo'}}\ab\\
@@ -109,15 +113,15 @@ $$
 要安装 Xonsh 非常简单，你可以直接使用 `pip` 安装它：
 
 $$
-\def{\ba}{\begin{aligned}\dollar}
-\def{\ab}{\end{aligned}\\}
+\def\ba{\begin{aligned}\dollar}
+\def\ab{\end{aligned}\\}
 \newcommand{\B}[1]{{\texttt{#1}}}
-\def{\kw}{\textcolor{#FFAE57}}
-\def{\st}{\textcolor{#BBE67E}}
-\def{\co}{\textcolor{#D4BFFF}}
-\def{\op}{\textcolor{#80D4FF}}
-\def{\lxl}{{\texttt{\$}}}
-\def{\dollar}{\textcolor{#5CCFE6}\lxl\ }
+\def\kw{\textcolor{#FFAE57}}
+\def\st{\textcolor{#BBE67E}}
+\def\co{\textcolor{#D4BFFF}}
+\def\op{\textcolor{#80D4FF}}
+\def\lxl{{\texttt{\$}}}
+\def\dollar{\textcolor{#5CCFE6}\lxl\ }
 \color{#D9D7CE}\colorbox{#212733}{
 $\begin{array}{ll}
 \ba&\B{\kw{python3} -m pip install 'xonsh[full]'}\ab
@@ -128,15 +132,15 @@ $$
 如果你在用 arch 系的操作系统，也可以使用 `pacman`：
 
 $$
-\def{\ba}{\begin{aligned}\dollar}
-\def{\ab}{\end{aligned}\\}
+\def\ba{\begin{aligned}\dollar}
+\def\ab{\end{aligned}\\}
 \newcommand{\B}[1]{{\texttt{#1}}}
-\def{\kw}{\textcolor{#FFAE57}}
-\def{\st}{\textcolor{#BBE67E}}
-\def{\co}{\textcolor{#D4BFFF}}
-\def{\op}{\textcolor{#80D4FF}}
-\def{\lxl}{{\texttt{\$}}}
-\def{\dollar}{\textcolor{#5CCFE6}\lxl\ }
+\def\kw{\textcolor{#FFAE57}}
+\def\st{\textcolor{#BBE67E}}
+\def\co{\textcolor{#D4BFFF}}
+\def\op{\textcolor{#80D4FF}}
+\def\lxl{{\texttt{\$}}}
+\def\dollar{\textcolor{#5CCFE6}\lxl\ }
 \color{#D9D7CE}\colorbox{#212733}{
 $\begin{array}{ll}
 \ba&\B{\kw{pacman} -S xonsh}\ab
@@ -147,15 +151,15 @@ $$
 安装完成后，你可以将其设置为默认 Shell：
 
 $$
-\def{\ba}{\begin{aligned}\dollar}
-\def{\ab}{\end{aligned}\\}
+\def\ba{\begin{aligned}\dollar}
+\def\ab{\end{aligned}\\}
 \newcommand{\B}[1]{{\texttt{#1}}}
-\def{\kw}{\textcolor{#FFAE57}}
-\def{\st}{\textcolor{#BBE67E}}
-\def{\co}{\textcolor{#D4BFFF}}
-\def{\op}{\textcolor{#80D4FF}}
-\def{\lxl}{{\texttt{\$}}}
-\def{\dollar}{\textcolor{#5CCFE6}\lxl\ }
+\def\kw{\textcolor{#FFAE57}}
+\def\st{\textcolor{#BBE67E}}
+\def\co{\textcolor{#D4BFFF}}
+\def\op{\textcolor{#80D4FF}}
+\def\lxl{{\texttt{\$}}}
+\def\dollar{\textcolor{#5CCFE6}\lxl\ }
 \color{#D9D7CE}\colorbox{#212733}{
 $\begin{array}{ll}
 \ba&\B{\kw{chsh} -s /usr/bin/xonsh}\ab

@@ -1,6 +1,8 @@
-{"title":"计算几何笔记","tags":["笔记"],"uptime":1616492568}
 ---
-# 计算几何笔记
+title: 计算几何笔记
+tags: [笔记]
+uptime: 1616492568
+---
 
 ## EPS 与实数比较
 
@@ -42,15 +44,14 @@ $$
 
 将两个向量 $\overrightarrow{v_1}$ 和 $\overrightarrow{v_2}$ 相加，可以把 $\overrightarrow{v_2}$ 的起始点平移到 $\overrightarrow{v_1}$ 的结束点，然后 $(0,0)$ 到 平移后的 $\overrightarrow{v_2}$ 终点形成的新线段就是相加的结果。
 
-
-| before                                                       | after                                                        |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| before                                                          | after                                                           |
+| --------------------------------------------------------------- | --------------------------------------------------------------- |
 | ![](https://cdn.luogu.com.cn/upload/image_hosting/eux4n2bz.png) | ![](https://cdn.luogu.com.cn/upload/image_hosting/ujr2acx3.png) |
 
 减法同加法类似，只是将 $\overrightarrow{v_2}$ 的**结束点**平移到 $\overrightarrow{v_1}$ 的结束点。
 
-| before                                                       | after                                                        |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| before                                                          | after                                                           |
+| --------------------------------------------------------------- | --------------------------------------------------------------- |
 | ![](https://cdn.luogu.com.cn/upload/image_hosting/eux4n2bz.png) | ![](https://cdn.luogu.com.cn/upload/image_hosting/ay235u7q.png) |
 
 将一个向量乘或除以 $k$，表示将向量所对应的有向线段长度变为原来的 $k$ 倍或 $k$ 分之一。
@@ -72,15 +73,21 @@ double norm(Vec a) { return a.x * a.x + a.y * a.y; }
 
 #### 点乘
 
-$$\overrightarrow{(x_1,y_1)} \cdot \overrightarrow{(x_2,y_2)} = x_1x_2+ y_1y_2$$
+$$
+\overrightarrow{(x_1,y_1)} \cdot \overrightarrow{(x_2,y_2)} = x_1x_2+ y_1y_2
+$$
 
 点乘的结果为两个向量的长度的积再乘以两个向量的夹角的余弦，即
 
-$$\overrightarrow{v_1} \cdot \overrightarrow{v_2} = |\overrightarrow{v_1}| |\overrightarrow{v_2}| \cos\langle \overrightarrow{v_1}, \overrightarrow{v_2} \rangle$$
+$$
+\overrightarrow{v_1} \cdot \overrightarrow{v_2} = |\overrightarrow{v_1}| |\overrightarrow{v_2}| \cos\langle \overrightarrow{v_1}, \overrightarrow{v_2} \rangle
+$$
 
 #### 叉乘
 
-$$\overrightarrow{(x_1,y_1)} \times \overrightarrow{(x_2,y_2)} = x_1y_2- y_1x_2$$
+$$
+\overrightarrow{(x_1,y_1)} \times \overrightarrow{(x_2,y_2)} = x_1y_2- y_1x_2
+$$
 
 点乘的结果为将 $\overrightarrow{v_2}$ 的起始点平移到 $\overrightarrow{v_1}$ 的结束点后以 $\overrightarrow{v_1}$ 与 $\overrightarrow{v_2}$ 为邻边的平行四边形的面积。
 

@@ -1,5 +1,9 @@
-{"title":"P7514 题解","tags":["题解"],"uptime":1618037488}
 ---
+title: P7514 题解
+tags: ["题解"]
+uptime: 1618037488
+---
+
 说一下我在考场上写的思路，不一定正确。
 
 首先，最优策略一定是翻按照正面数字正序排序后的前后缀。
@@ -8,7 +12,9 @@
 
 然后枚举 $i,j$ 表示翻前 $i$ 张和后 $j$ 张。此时的极差
 
-$$F(i,j)=\begin{cases}RMax(j)-LMin(i)&LMax(i)=a_n \wedge RMin(j)=a_1\\\max\{LMax(i),RMax(j)\}-LMin(i)&LMax(i)\ne a_n \wedge RMin(j)=a_1\\RMax(j)-\min\{LMin(i),RMin(j)\}&LMax(i)=a_n \wedge RMin(j)\ne a_1\\\max\{LMax(i),RMax(j)\}-\min\{LMin(i),RMin(j)\}&\text{otherwise}\end{cases}$$
+$$
+F(i,j)=\begin{cases}RMax(j)-LMin(i)&LMax(i)=a_n \wedge RMin(j)=a_1\\\max\{LMax(i),RMax(j)\}-LMin(i)&LMax(i)\ne a_n \wedge RMin(j)=a_1\\RMax(j)-\min\{LMin(i),RMin(j)\}&LMax(i)=a_n \wedge RMin(j)\ne a_1\\\max\{LMax(i),RMax(j)\}-\min\{LMin(i),RMin(j)\}&\text{otherwise}\end{cases}
+$$
 
 但是这样做的复杂度为 $O(n^2 \log n)$ 太高了过不去，必须优化一下。我们可以用一种类似前缀和的方法维护 $RMax_i-RMin_i$ 的后缀最小值的下标 $P_i$。这样就可以避免枚举 $j$。
 
@@ -16,7 +22,9 @@ $$F(i,j)=\begin{cases}RMax(j)-LMin(i)&LMax(i)=a_n \wedge RMin(j)=a_1\\\max\{LMax
 
 此时的答案为：
 
-$$\begin{aligned}\min\limits_{i=0}^m&\{F(i,P_{i+1+n-m})\}\end{aligned}$$
+$$
+\begin{aligned}\min\limits_{i=0}^m&\{F(i,P_{i+1+n-m})\}\end{aligned}
+$$
 
 总复杂度 $O((m+n) \log m)$，常数有点大，不过开了 O2 应该能过。
 

@@ -1,5 +1,9 @@
-{"title":"CF1567E 题解","tags":["题解"],"uptime":1630925545}
 ---
+title: CF1567E 题解
+tags: [题解]
+uptime: 1630925545
+---
+
 ## 题目大意
 
 单点修改，区间严格不降子区间计数。
@@ -89,6 +93,3 @@ int Ask(int l, int r) {
   return res;
 }
 ```
-
-
-

@@ -1,9 +1,7 @@
-{
-  "title": "Hello world",
-  "tags": ["test", "test2"],
-  "uptime": 1641365813016
-}
-
+---
+title: hello world
+tags: [test, test2]
+uptime: 1641365813
 ---
 
 这是一篇测试博客。

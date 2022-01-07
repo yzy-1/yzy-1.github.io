@@ -29,7 +29,7 @@
       rel="stylesheet"
       href="https://unpkg.com/github-markdown-css@5.1.0/github-markdown-light.css"
     />
-  <script defer src="../js/post.b40d710.js"></script><script defer src="../js/post/test.f884a5b.js"></script><link href="../css/post-test.7c10b3d.css" rel="stylesheet"></head>
+  <script defer src="../js/post.b40d710.js"></script><script defer src="../js/post/test.f884a5b.js"></script><link href="../css/post-test.3cba3c7.css" rel="stylesheet"></head>
 
   <body>
     <!--[if lt IE 7]>
@@ -185,14 +185,14 @@
 <h2>This is an H2</h2>
 <h3>字符效果和横线等</h3>
 <hr />
-<p><del>删除线</del> <s>删除线（开启识别HTML标签时）</s>
-<em>斜体字</em>      <em>斜体字</em>
-<strong>粗体</strong>  <strong>粗体</strong>
-<em><strong>粗斜体</strong></em> <em><strong>粗斜体</strong></em></p>
+<p><del>删除线</del> <s>删除线（开启识别 HTML 标签时）</s>
+<em>斜体字</em> <em>斜体字</em>
+<strong>粗体</strong> <strong>粗体</strong>
+<strong><em>粗斜体</em></strong> <strong><em>粗斜体</em></strong></p>
 <p>上标：X<sub>2</sub>，下标：O<sup>2</sup></p>
-<p><strong>缩写(同HTML的abbr标签)</strong></p>
+<p><strong>缩写(同 HTML 的 abbr 标签)</strong></p>
 <blockquote>
-<p>即更长的单词或短语的缩写形式，前提是开启识别HTML标签时，已默认开启</p>
+<p>即更长的单词或短语的缩写形式，前提是开启识别 HTML 标签时，已默认开启</p>
 </blockquote>
 <p>The <abbr title="Hyper Text Markup Language">HTML</abbr> specification is maintained by the <abbr title="World Wide Web Consortium">W3C</abbr>.</p>
 <h3>引用 Blockquotes</h3>
@@ -227,45 +227,45 @@
 | <span class="hljs-attribute">Content</span> Cell  | <span class="hljs-attribute">Content</span> Cell  |
 | <span class="hljs-attribute">Content</span> Cell  | <span class="hljs-attribute">Content</span> Cell  |
 </code></pre>
-<h4>JS代码</h4>
-<pre><code class="hljs language-javascript"><span class="hljs-keyword">function</span> <span class="hljs-title hljs-function">test</span>(<span class="hljs-params"></span>){
+<h4>JS 代码</h4>
+<pre><code class="hljs language-javascript"><span class="hljs-keyword">function</span> <span class="hljs-title hljs-function">test</span>(<span class="hljs-params"></span>) {
   <span class="hljs-variable hljs-language">console</span>.<span class="hljs-title hljs-function">log</span>(<span class="hljs-string">"Hello world!"</span>);
 }
 
-(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>){
-  <span class="hljs-keyword">var</span> box = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>){
+(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">var</span> box = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
     <span class="hljs-keyword">return</span> box.<span class="hljs-property">fn</span>.<span class="hljs-title hljs-function">init</span>();
   };
 
   box.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span> = box.<span class="hljs-property">fn</span> = {
-    init : <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>){
-      <span class="hljs-variable hljs-language">console</span>.<span class="hljs-title hljs-function">log</span>(<span class="hljs-string">'box.init()'</span>);
+    <span class="hljs-attr">init</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+      <span class="hljs-variable hljs-language">console</span>.<span class="hljs-title hljs-function">log</span>(<span class="hljs-string">"box.init()"</span>);
 
-    <span class="hljs-keyword">return</span> <span class="hljs-variable hljs-language">this</span>;
+      <span class="hljs-keyword">return</span> <span class="hljs-variable hljs-language">this</span>;
     },
 
-  add : <span class="hljs-keyword">function</span>(<span class="hljs-params">str</span>){
-    <span class="hljs-title hljs-function">alert</span>(<span class="hljs-string">"add"</span>, str);
+    <span class="hljs-attr">add</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">str</span>) {
+      <span class="hljs-title hljs-function">alert</span>(<span class="hljs-string">"add"</span>, str);
 
-    <span class="hljs-keyword">return</span> <span class="hljs-variable hljs-language">this</span>;
-  },
+      <span class="hljs-keyword">return</span> <span class="hljs-variable hljs-language">this</span>;
+    },
 
-  remove : <span class="hljs-keyword">function</span>(<span class="hljs-params">str</span>){
-    <span class="hljs-title hljs-function">alert</span>(<span class="hljs-string">"remove"</span>, str);
+    <span class="hljs-attr">remove</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">str</span>) {
+      <span class="hljs-title hljs-function">alert</span>(<span class="hljs-string">"remove"</span>, str);
 
-    <span class="hljs-keyword">return</span> <span class="hljs-variable hljs-language">this</span>;
-  }
+      <span class="hljs-keyword">return</span> <span class="hljs-variable hljs-language">this</span>;
+    },
   };
 
   box.<span class="hljs-property">fn</span>.<span class="hljs-property">init</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span> = box.<span class="hljs-property">fn</span>;
 
-  <span class="hljs-variable hljs-language">window</span>.<span class="hljs-property">box</span> =box;
+  <span class="hljs-variable hljs-language">window</span>.<span class="hljs-property">box</span> = box;
 })();
 
 <span class="hljs-keyword">var</span> testBox = <span class="hljs-title hljs-function">box</span>();
 testBox.<span class="hljs-title hljs-function">add</span>(<span class="hljs-string">"jQuery"</span>).<span class="hljs-title hljs-function">remove</span>(<span class="hljs-string">"jQuery"</span>);
 </code></pre>
-<h4>HTML代码 HTML codes</h4>
+<h4>HTML 代码 HTML codes</h4>
 <pre><code class="hljs language-html"><span class="hljs-meta">&#x3C;!DOCTYPE <span class="hljs-keyword">html</span>></span>
 <span class="hljs-tag">&#x3C;<span class="hljs-name">html</span>></span>
   <span class="hljs-tag">&#x3C;<span class="hljs-name">head</span>></span>
@@ -426,11 +426,11 @@ testBox.<span class="hljs-title hljs-function">add</span>(<span class="hljs-stri
 <table><thead><tr><th>Item</th><th align="right">Value</th></tr></thead><tbody><tr><td>Computer</td><td align="right"><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1600</mn></mrow><annotation encoding="application/x-tex">1600</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1600</span></span></span></span></span></td></tr><tr><td>Phone</td><td align="right"><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>12</mn></mrow><annotation encoding="application/x-tex">12</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">12</span></span></span></span></span></td></tr><tr><td>Pipe</td><td align="right"><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span></td></tr></tbody></table>
 <hr />
 <h4>特殊符号 HTML Entities Codes</h4>
-<p>© &#x26;  ¨ ™ ¡ £
+<p>© &#x26; ¨ ™ ¡ £
 &#x26; &#x3C; > ¥ € ® ± ¶ § ¦ ¯ « ·</p>
-<p>X² Y³ ¾ ¼  ×  ÷   »</p>
-<p>18ºC  "  '</p>
-<h3>Emoji表情 :smiley:</h3>
+<p>X² Y³ ¾ ¼ × ÷ »</p>
+<p>18ºC " '</p>
+<h3>Emoji 表情 :smiley:</h3>
 <blockquote>
 <p>Blockquotes :star:</p>
 </blockquote>
@@ -443,7 +443,7 @@ testBox.<span class="hljs-title hljs-function">add</span>(<span class="hljs-stri
 <li class="task-list-item"><input type="checkbox" disabled /> [ ]this is an incomplete item :fa-star: :fa-gear:;
 <ul class="contains-task-list">
 <li class="task-list-item"><input type="checkbox" disabled /> :smiley: this is an incomplete item <a href="#">test link</a> :fa-star: :fa-gear:;</li>
-<li class="task-list-item"><input type="checkbox" disabled /> :smiley: this is  :fa-star: :fa-gear: an incomplete item <a href="#">test link</a>;</li>
+<li class="task-list-item"><input type="checkbox" disabled /> :smiley: this is :fa-star: :fa-gear: an incomplete item <a href="#">test link</a>;</li>
 </ul>
 </li>
 </ul>

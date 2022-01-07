@@ -29,7 +29,7 @@
       rel="stylesheet"
       href="https://unpkg.com/github-markdown-css@5.1.0/github-markdown-light.css"
     />
-  <script defer src="js/index.16a34bb.js"></script><link href="css/index.8976a33.css" rel="stylesheet"></head>
+  <script defer src="js/index.16a34bb.js"></script><link href="css/index.408332d.css" rel="stylesheet"></head>
 
   <body>
     <!--[if lt IE 7]>
@@ -77,46 +77,6 @@
 <section class="content">
   
   <article>
-    <header><a href="/post/helloworld.html">Hello world</a></header>
-    <div class="tags">
-      
-      <a href="##" class="tag">test</a>
-      
-      <a href="##" class="tag">test2</a>
-      
-    </div>
-    <div class="text">
-这是一篇测试博客。
-
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta eius quod nesciunt unde iste voluptatibus qui. Repellendus totam optio error! Natus debitis impedit dolorem atque, nam provident dolorum laudantium aspernatur?
-
-&gt; 这是一段引用。
-
-- hello
--</div>
-  </article>
-  
-  <article>
-    <header><a href="/post/test.html">Test 测试博客</a></header>
-    <div class="tags">
-      
-      <a href="##" class="tag">test</a>
-      
-    </div>
-    <div class="text">
-$$
-\newcommand{\bl}[2]{\fcolorbox{#1}{#1}{\raisebox{#2}{\kern{#2}}}}
-\def\arraystretch{1e-9}
-\begin{array}{l}
-\def\B{\bl{black}{2em}}
-\def\W{\bl{white}{2em}}
-\def\C{\bl{#ccc}{2em}}
-\def\D{\bl{#666}{2em}}
-\begin{array}{|l}\hline
-\W\W\W\W\C\D\B\B\B\B\B\B\B\</div>
-  </article>
-  
-  <article>
     <header><a href="/post/solution-p8011.html">P8011 题解</a></header>
     <div class="tags">
       
@@ -142,6 +102,44 @@ void Dfs(int x, int mx) {
         int r = l + b[i].size() - 1;
         if (r &gt; mx) break;
     </div>
+  </article>
+  
+  <article>
+    <header><a href="/post/helloworld.html">hello world</a></header>
+    <div class="tags">
+      
+      <a href="##" class="tag">test</a>
+      
+      <a href="##" class="tag">test2</a>
+      
+    </div>
+    <div class="text">这是一篇测试博客。
+
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta eius quod nesciunt unde iste voluptatibus qui. Repellendus totam optio error! Natus debitis impedit dolorem atque, nam provident dolorum laudantium aspernatur?
+
+&gt; 这是一段引用。
+
+*   hello
+</div>
+  </article>
+  
+  <article>
+    <header><a href="/post/test.html">Test 测试博客</a></header>
+    <div class="tags">
+      
+      <a href="##" class="tag">test</a>
+      
+    </div>
+    <div class="text">$$
+\newcommand{\bl}[2]{\fcolorbox{#1}{#1}{\raisebox{#2}{\kern{#2}}}}
+\def\arraystretch{1e-9}
+\begin{array}{l}
+\def\B{\bl{black}{2em}}
+\def\W{\bl{white}{2em}}
+\def\C{\bl{#ccc}{2em}}
+\def\D{\bl{#666}{2em}}
+\begin{array}{|l}\hline
+\W\W\W\W\C\D\B\B\B\B\B\B\B\k</div>
   </article>
   
   <article>
@@ -176,9 +174,10 @@ void Dfs(int x, int mx) {
 ## 做法
 
 考虑 DP，设 $dp(i)$ 表示当前要猜的是大小为 $i$ 的区间时，要猜到数字最差情况所耗费的代价。则有：
+
 $$
 dp(i)=\begin{cases}
-0 &amp; i\le</div>
+0 &amp; i\l</div>
   </article>
   
   <article>
@@ -192,11 +191,11 @@ dp(i)=\begin{cases}
 
 各位在书写 shell 脚本时有没有遇到过这些不称心之处：
 
-- bash：语法繁琐，就算个 &#x60;1+1&#x60; 也要写成 &#x60;((1+1))&#x60; 或者借助外部程序 &#x60;bc&#x60; 写成 &#x60;&#x27;1+1&#x27; | bc&#x60; 这种丑陋的东西。且不适合作为交互 shell 来使用。
-- zsh：语法方面同 bash。
-- fish：语法方面各种参数乱飞，就拿用来定义变量的 &#x60;set&#x60; 来说吧，就有 &#x60;-x&#x60;、&#x60;-g&#x60;、&#x60;-a&#x60;、&#x60;-e&#x60; 等各种参数，用来写脚本可读性也不是很高。
+*   bash：语法繁琐，就算个 &#x60;1+1&#x60; 也要写成 &#x60;((1+1))&#x60; 或者借助外部程序 &#x60;bc&#x60; 写成 &#x60;&#x27;1+1&#x27; | bc&#x60; 这种丑陋的东西。且不适合作为交互 shell 来使用。
+*   zsh：语法方面同 bash。
+*   fish：语法方面各种参数乱飞，就拿用来定义变量的 &#x60;set&#x60; 来说吧，就有 &#x60;-x&#x60;、&#x60;-g&#x60;、&#x60;-a&#x60;、&#x60;-e&#x60; 等各种参数，用来写脚本可读性也不是很高。
 
-这时候，我们就希望能借用高级语言中的一些语法</div>
+这时候，我们就希望能借用高级语言</div>
   </article>
   
   <article>
@@ -212,12 +211,12 @@ dp(i)=\begin{cases}
 
 设 $F(i,l,r)$ 为值 $i$ 在区间 $[l,r]$ 内最后一次出现的下标减第一次出现的下标。
 
-- &#x60;1 x y&#x60;：单点修改 $a_x \gets y$。
-- &#x60;2 l r&#x60;：求 $\sum_{i=1}^n F(i,l,r)$。
+*   &#x60;1 x y&#x60;：单点修改 $a_x \gets y$。
+*   &#x60;2 l r&#x60;：求 $\sum_{i=1}^n F(i,l,r)$。
 
 ## 做法 1（TLE）
 
-考虑带修莫队。对于每个不同的颜色，开一个 &#x60;set&#x60; 维护该颜色出现的下标。则颜色 $i$ 对答案的贡献就为</div>
+考虑带修莫队。对于每个不同的颜色，开一个 &#x60;set&#x60; 维护该颜色出现的下标。则颜色 $i$ 对答案的</div>
   </article>
   
   <article>
@@ -267,9 +266,9 @@ dp(i)=\begin{cases}
     </div>
     <div class="text">首先考虑什么样的表达式是一个结果一定为 $0$，什么样的一定为 $1$，什么样的既可以为 $0$ 也可以为 $1$。
 
-- 如果运算符为 &#x60;?&#x60;，则如果左操作数和右操作数确定且相同，则结果一定为左操作数。否则结果可以是 $0$ 或 $1$。
-- 如果运算符为 &#x60;&amp;&#x60;，且左右操作数中至少有一个确定为 $0$，则结果一定为 $0$。否则如果两个操作数均确定，则结果为两操作数按位与的结果。否则结果可以是 $0$ 或 $1$。
-- 如果运算符为 &#x60;|&#x60;，且左右操作数中至少有一个确定为 $1$，则结果一定为 $1$。</div>
+*   如果运算符为 &#x60;?&#x60;，则如果左操作数和右操作数确定且相同，则结果一定为左操作数。否则结果可以是 $0$ 或 $1$。
+*   如果运算符为 &#x60;&amp;&#x60;，且左右操作数中至少有一个确定为 $0$，则结果一定为 $0$。否则如果两个操作数均确定，则结果为两操作数按位与的结果。否则结果可以是 $0$ 或 $1$。
+*   如果运算符为 &#x60;|&#x60;，且左右操作数中至少有一个确定为 $1$，则结果一定</div>
   </article>
   
   <article>
@@ -281,14 +280,14 @@ dp(i)=\begin{cases}
     </div>
     <div class="text">对于 easy version，有一个显然的结论：最优方案一定能使 A 队每一局都赢。
 
-- 对于前 $n$ 个人，通过修改 $a$ 数组使得 A 队全胜，这样可以保证对于 $a$ 数组的修改至多为 $n$ 次；
-- 对于后 $n$ 个人，通过修改 $b$ 数组使得 A 队全胜，这样可以保证对于 $b$ 数组的修改至多为 $n$ 次。
+*   对于前 $n$ 个人，通过修改 $a$ 数组使得 A 队全胜，这样可以保证对于 $a$ 数组的修改至多为 $n$ 次；
+*   对于后 $n$ 个人，通过修改 $b$ 数组使得 A 队全胜，这样可以保证对于 $b$ 数组的修改至多为 $n$ 次。
 
 &#x60;&#x60;&#x60;cpp
 int a[N], b[N], n, T;
 signed main() {
   in(T); while(T--){
-    in(n)(a, 2 * n)(</div>
+    in(n)(a, 2 *</div>
   </article>
   
   <article>
@@ -338,28 +337,6 @@ char s[1</div>
   </article>
   
   <article>
-    <header><a href="/post/solution-cf1567a.html">CF1567A 题解</a></header>
-    <div class="tags">
-      
-      <a href="##" class="tag">题解</a>
-      
-    </div>
-    <div class="text">## 题目翻译
-
-一个 $2$ 行 $n$ 列的网格，用 $n$ 个 $1\times2$ 大小的多米诺骨牌完全覆盖在这个网格上，可以水平或竖直放置。给出其中的一行的放置情况，问另一行的放置情况。如有多种可能方案则任意输出一种。
-
-## 大体思路
-
-如果上边一排放了一个上半部分的骨牌，则下面一排就要放一个下半部分的。反之同理。对于剩下的位置交替地放置左右朝向的骨牌即可。
-
-&#x60;&#x60;&#x60;cpp
-signed main() {
-  re (_, in()) {
-    in(n)(s + 1);
-    re (i,</div>
-  </article>
-  
-  <article>
     <header><a href="/post/solution-cf1567e.html">CF1567E 题解</a></header>
     <div class="tags">
       
@@ -394,22 +371,6 @@ signed main() {
   </article>
   
   <article>
-    <header><a href="/post/solution-cf1553a.html">CF1553A 题解</a></header>
-    <div class="tags">
-      
-      <a href="##" class="tag">题解</a>
-      
-    </div>
-    <div class="text">## 题目大意
-
-定义 $S(x)$ 为十进制数字 $x$ 中每一位的数字之和。求出 $[1,n]$ 之间有多少个整数 $i$ 满足 $S(i)&gt;S(i+1)$。
-
-## 大体思路
-
-可以发现，如果 $i+1$ 在做加法的过程中出现了进位，则 $S(i+1)$ 的值会比 $S(i)$ 的值小。也就是说，如果 $i$ 的末尾数字为 $9$，则 $i$ 就符合条件。题目就转化为「求出 $[1,n]$ 之间有多少个整数的个位为 $9$」。答案显而易见为 $\lfloor \dfrac{n+1} {10}\rflo</div>
-  </article>
-  
-  <article>
     <header><a href="/post/solution-cf690a2.html">CF690A2 题解</a></header>
     <div class="tags">
       
@@ -432,24 +393,8 @@ signed main() {
     </div>
     <div class="text">预处理 DFS 序 $\operatorname{dfn}(i)$ 和每个节点的子树中 DFS 序最大值 $\operatorname{low}(i)$，将树上问题转化为序列问题。我们可以把「出现次数为奇数」转化为异或操作，考虑分块，在每个块内维护一个 &#x60;bitset&#x60;，每一个二进制位代表 $[0,p)$ 范围内的一个整数，维护块内异或和即可。
 
-- 对于 $1$ 操作，我们可以将 &#x60;bitset&#x60; 整体左移 $v$ 位，对于大于 $p$ 位的部分截断并移至最低位。
-- 对于 $2$ 操作，直接暴力重构整个</div>
-  </article>
-  
-  <article>
-    <header><a href="/post/solution-p7694.html">P7694 题解</a></header>
-    <div class="tags">
-      
-      <a href="##" class="tag">题解</a>
-      
-    </div>
-    <div class="text">严格一行 Python 3。
-
-&#x60;&#x60;&#x60;python
-for i in [i if i.isupper() else &quot;&quot; for i in input()]:print(i,end=&quot;&quot;)
-&#x60;&#x60;&#x60;
-
-由于「每一个长变体中的单词开头一定是大写字母」，我们可以用列表生成式「筛选」出输入字符串中的所有大写字母，遍历输出即可。</div>
+*   对于 $1$ 操作，我们可以将 &#x60;bitset&#x60; 整体左移 $v$ 位，对于大于 $p$ 位的部分截断并移至最低位。
+*   对于 $2$ 操作，直接暴力</div>
   </article>
   
   <article>
@@ -464,12 +409,15 @@ for i in [i if i.isupper() else &quot;&quot; for i in input()]:print(i,end=&quot
 由于异或运算相当于二进制不进位加法，所以对于两个正整数 $a,b$，一定有 $a\oplus b \le a+b$。同时由于异或满足交换律和结合律，我们可以用类似前缀和的方法预处理出「前缀异或」。
 
 由于「异或运算相当于二进制不进位加法」，我们可以得出一个结论：如果
+
 $$
 \sum_{i=l}^ra_i=\bigoplus_{i=l}^ra_i(l&lt;r),
 $$
+
 则一定满足
+
 $$
-\sum_{i=l}^{r-1}a_i=\bigoplus_{i=l}^</div>
+\sum_{i=l}^{r-1}a_i=\bigoplus_{i=</div>
   </article>
   
   <article>
@@ -502,26 +450,12 @@ for _ in range(T):
     <div class="text">今天模拟赛正好出了这道题，分享一种考场上写的做法。
 
 考虑每种操作所能增加或减少多少个还能参加一次比赛的人数，我们设第 $i$ 种操作所增加的人数为 $b_i$，则：
+
 $$
 b_i=\begin{cases}n&amp;i=1\\b_{i-1}-2 &amp;\text{otherwise}.\end{cases}
 $$
-分析样例可得，最优策略一定是一个 $b_i&gt;0$ 的 $i$ 操作和一个 $b_j&lt;0$ 的 $j$ 操作不断交替，然后一直循环下去。根据贪心思想，因为数据保证 $p_i&lt;p_j$，我们要让 $j$ 操作</div>
-  </article>
-  
-  <article>
-    <header><a href="/post/solution-p7678.html">P7678 题解</a></header>
-    <div class="tags">
-      
-      <a href="##" class="tag">题解</a>
-      
-    </div>
-    <div class="text">严格一行 Python 3。
 
-&#x60;&#x60;&#x60;python
-print(len(input().strip().replace(&#x27;c=&#x27;,&#x27;W&#x27;).replace(&#x27;c-&#x27;,&#x27;Y&#x27;).replace(&#x27;dz=&#x27;,&#x27;F&#x27;).replace(&#x27;d-&#x27;,&#x27;A&#x27;).replace(&#x27;lj&#x27;,&#x27;K&#x27;).replace(&#x27;nj&#x27;,&#x27;I&#x27;).replace(&#x27;s=&#x27;,&#x27;O&#x27;).replace(&#x27;z=&#x27;,&#x27;I&#x27;)))
-&#x60;&#x60;&#x60;
-
-说下原理：Python 的 &#x60;s.replace(a,b)&#x60; 函数能将源字符串 &#x60;s&#x60; 中的所有子串 &#x60;</div>
+分析样例可得，最优策略一定是一个 $b_i&gt;0$ 的 $i$ 操作和一个 $b_j&lt;0$ 的 $j$ 操作不断交替，然后一直循环下去。根据贪心思想，因为数据保证 $p_i&lt;p_j$，我们要让 $j$ </div>
   </article>
   
   <article>
@@ -549,28 +483,6 @@ void Swap() { Xor(1), Xor(0), Xor(1); }
 
 &#x60;&#x60;&#x60;cpp
 void Add(in</div>
-  </article>
-  
-  <article>
-    <header><a href="/post/solution-p7666.html">P7666 题解</a></header>
-    <div class="tags">
-      
-      <a href="##" class="tag">题解</a>
-      
-    </div>
-    <div class="text">本题解修改于 @uliahradri 大佬的（未通过）题解。
-
-## 题目大意
-
-有 $n$ 个点，用 $k$ 个区间覆盖这些点且使区间长度和最小。
-
-## 解题思路
-
-随便手玩一下样例，画个图，可以发现这些区间之间存在 $k-1$ 个空。
-
-而有 $n$ 个点，所以共有 $n-1$ 个空，点 $i$ 和点 $i+1$ 之间的空的长度为 $t_{i+1}-t_{i}-1$。
-
-贪心地想，我们找到前 $k-1$ 大的空，那么答案就是 $t_n-t_1+1$ 再减去这 $k-1$ 个空的长度，找前 $k-1$ </div>
   </article>
   
   <article>
@@ -632,30 +544,6 @@ void Add(in</div>
   </article>
   
   <article>
-    <header><a href="/post/solution-cf1514b.html">CF1514B 题解</a></header>
-    <div class="tags">
-      
-      <a href="##" class="tag">题解</a>
-      
-    </div>
-    <div class="text">最佳情况是 $n$ 个数的 $k$ 个二进制位中，每一位都是 $n-1$ 个数为 $1$，$1$ 个为 $0$。
-
-那么问题就变成了：一共有 $k$ 个位置，每个位置都要选一个 $1\sim n$ 的数，问有多少选择方案。答案为 $n^k$，快速幂计算即可。
-
-复杂度：$O(\log k)$。
-
-### Code:
-
-&#x60;&#x60;&#x60;cpp
-#define int ll
-
-ll pow(ll a,ll b,const ll&amp;m) {
-	ll res=1;a%=m;
-	while(b&gt;0) {
-		if(b&amp;1)res</div>
-  </article>
-  
-  <article>
     <header><a href="/post/solution-p7514.html">P7514 题解</a></header>
     <div class="tags">
       
@@ -676,16 +564,15 @@ ll pow(ll a,ll b,const ll&amp;m) {
       <a href="##" class="tag">笔记</a>
       
     </div>
-    <div class="text"># 计算几何笔记
-
-## EPS 与实数比较
+    <div class="text">## EPS 与实数比较
 
 我们在判断两个整数是否相等的时候通常会用等于号直接比较，但是由于浮点数 &#x60;double&#x60; 有精度误差，在比较时，需要允许一定的误差。比如比较浮点数 $a,b$ 是否相等时，如果 $|a-b| \le \mathrm{eps}$，则认为 $a=b$。
 
 &#x60;&#x60;&#x60;cpp
 const double eps = 1e-9; // 对于大部分题目 1e-9 足够小了
 
-bool fsame(double a, double b) { return fabs(a - b) </div>
+bool fsame(double a, double b) { return fabs(a - b) &lt;= eps; }
+</div>
   </article>
   
   <article>
@@ -717,75 +604,16 @@ bool fsame(double a, double b) { return fabs(a - b) </div>
       <a href="##" class="tag">题解</a>
       
     </div>
-    <div class="text">题目大意
----
+    <div class="text">## 题目大意
 
-共 $t (t\le 5000)$ 组数据,
-对于每组数据输入一个整数 $n (2 \le n \le 10^{10})$
-请构造一个长度为 $k$ 的数列 $a$, 满足以下条件:
+共 $t (t\le 5000)$ 组数据，对于每组数据输入一个整数 $n (2 \le n \le 10^{10})$ 请构造一个长度为 $k$ 的数列 $a$，满足以下条件：
 
-- $\forall i \in a : i &gt; 1$;
-- $\prod_{i=1}^k a_i = n$;
-- $\forall i \in [2,k] : a_i \bmod a_{i-1} = 0$ ;
-- $k$ 尽可能大;
+*   $\forall i \in a : i &gt; 1$；
+*   $\prod_{i=1}^k a_i = n$；
+*   $\forall i \in [2,k] : a_i \bmod a_{i-1} = 0$；
+*   $k$ 尽可能大。
 
-对于每组数据第一行输出一个整数 $k$,
-第二行输出 $k$ 个整数</div>
-  </article>
-  
-  <article>
-    <header><a href="/post/solution-cf1454b.html">CF1454B 题解</a></header>
-    <div class="tags">
-      
-      <a href="##" class="tag">题解</a>
-      
-    </div>
-    <div class="text">题目大意
----
-
-共 $t (t\le2\times10^4)$ 组数据,
-对于每组数据输入一个整数 $n (1 \le n \le 10^5)$
-和一个长度为 $n$ 的数组 $a(1\le a_i \le n)$.
-请找到数组中只出现过一次且最小的数**的下标** (从 $1$ 开始),
-如果找不到这样的数则输出 $-1$.
-
-对于所有测试点满足 $\sum_n \le 10^5$.
-
-做法
---
-
-使用 &#x60;std::vector&#x60; 开桶, 统计每个数字在数组中出现的位置, 然后 $\mathcal </div>
-  </article>
-  
-  <article>
-    <header><a href="/post/solution-cf1454a.html">CF1454A 题解</a></header>
-    <div class="tags">
-      
-      <a href="##" class="tag">题解</a>
-      
-    </div>
-    <div class="text">题目大意
----
-
-共 $t (1\le t\le100)$ 组数据, 对于每组数据输入一个整数 $n (2 \le n \le 100)$,
-输出一个 $1\sim n$ 的排列 $p$ 使得 $p_i \ne i$,
-如果有多种排列可以满足需求则任意输出一种.
-
-做法
---
-
-我们可以以如下方式生成这个排列:
-
-$$p_i=\begin{cases}
-1 &amp; \text{if }i=n\\
-i + 1 &amp; \text{otherwise}
-\end{cases}$$
-
-Code
----
-
-&#x60;&#x60;&#x60;cpp
-</div>
+对于每组数据第一行输出一个整数 $k$，第二行输出 $k$ </div>
   </article>
   
   <article>
@@ -802,32 +630,6 @@ Code
 #-- The download utilities that makepkg should use to acquire sources
 #  Format: &#x27;protocol::agent&#x27;
 DLAGENTS=(&#x27;file::/usr/bin/curl -gqC - -o %o</div>
-  </article>
-  
-  <article>
-    <header><a href="/post/solution-cf1445a.html">CF1445A 题解</a></header>
-    <div class="tags">
-      
-      <a href="##" class="tag">题解</a>
-      
-    </div>
-    <div class="text">题目思路
----
-
-使用二分法, 首先将 $a, b$ 扔进两个 &#x60;std::multiset&#x60; 里.
-
-因为要满足的条件是 $a_i + b_i \le x$, 即 $b_i \le x - a_i$,
-我们可以遍历 $a$,
-每次找到 $b$ 中最后一个 $\le x - a_i$ 的值,
-并将其删除,
-如果找不到这样的一个值, 说明无解.
-
-时间复杂度 $\mathcal O (t \cdot n \log n^2)$
-
-注意
----
-
-- 由于原数组中元素可重, 所以不能用 &#x60;set&#x60;, 要用 &#x60;m</div>
   </article>
   
   <article>

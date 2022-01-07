@@ -1,0 +1,161 @@
+/*!**********************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/css/global.css ***!
+  \**********************************************************************/
+html {
+  height: 100%;
+}
+
+body,
+.pure-g,
+.pure-g [class*="pure-u"],
+.markdown-body {
+  font-family: "Monda", -apple-system, "Pingfang SC", "Noto Sans CJK SC", "思源黑体", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+body {
+  line-height: 1.2;
+  height: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  font-size: 14px;
+  width: 100%;
+  overflow-x: hidden;
+  background: #eee;
+}
+
+::selection {
+  background: #cce2ff;
+  color: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: #0085a1;
+}
+
+a:hover {
+  color: #2d3e50;
+}
+
+.markdown-body li + li {
+  margin-top: 0;
+}
+
+#wrap,
+#sidebar {
+  transition: all 0.2s ease-out;
+}
+
+#wrap {
+  position: relative;
+}
+
+#sidebar {
+  position: fixed;
+  margin-left: -160px;
+  width: 160px;
+  z-index: 1001;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  overflow-y: hidden;
+  line-height: 1.5;
+  overflow-y: auto;
+  background: #111;
+}
+
+#sidebar a {
+  color: #999;
+  border: none;
+  white-space: normal;
+  padding: 0.625em 1em;
+}
+
+#sidebar .fa {
+  width: 16px;
+  text-align: center;
+  margin-right: 0.2em;
+}
+
+#sidebar .pure-menu-open {
+  background: transparent;
+  border: 0;
+}
+
+#sidebar .pure-sidebar ul {
+  border: none;
+  background: transparent;
+  display: block;
+}
+
+#sidebar ul,
+#sidebar .menu-item-divided {
+  border-top: 1px solid #333;
+  margin-top: 3px;
+  padding-top: 3px;
+}
+
+#sidebar li a:hover,
+#sidebar li a:focus {
+  background: #333;
+}
+
+#sidebar .pure-menu-heading {
+  font-size: 125%;
+  letter-spacing: 0.1em;
+  color: #fff;
+  margin-top: 0;
+  padding: 0.5em 0.8em;
+  text-transform: uppercase;
+}
+#sidebar .pure-menu-heading:hover,
+#sidebar .pure-menu-heading:focus {
+  color: #999;
+}
+
+@media (max-width: 58em) {
+  #layout.active {
+    position: relative;
+    left: 160px;
+  }
+}
+
+@media (min-width: 58em) {
+  #wrap {
+    padding-left: 160px;
+    left: 0;
+  }
+  #sidebar {
+    left: 160px;
+  }
+  .menu-link {
+    position: fixed;
+    left: 160px;
+    display: none;
+  }
+  #wrap.active .menu-link {
+    left: 160px;
+  }
+}
+
+#main > header,
+#main > .content {
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 2em 1em;
+}
+
+#main > header {
+  text-align: center;
+  border-bottom: 1px solid #eee;
+  letter-spacing: 0.05em;
+}
+
+#main > header h1 {
+  font-size: 300%;
+  margin: 0;
+}
+

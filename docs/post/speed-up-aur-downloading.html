@@ -29,7 +29,7 @@
       rel="stylesheet"
       href="https://unpkg.com/github-markdown-css@5.1.0/github-markdown-light.css"
     />
-  <script defer src="../js/post.b40d710.js"></script><script defer src="../js/post/speed-up-aur-downloading.79a1dda.js"></script><link href="../css/post-speed-up-aur-downloading.7c10b3d.css" rel="stylesheet"></head>
+  <script defer src="../js/post.b40d710.js"></script><script defer src="../js/post/speed-up-aur-downloading.79a1dda.js"></script><link href="../css/post-speed-up-aur-downloading.3cba3c7.css" rel="stylesheet"></head>
 
   <body>
     <!--[if lt IE 7]>
@@ -71,20 +71,20 @@
 <span class="hljs-comment">#-- The download utilities that makepkg should use to acquire sources</span>
 <span class="hljs-comment">#  Format: 'protocol::agent'</span>
 <span class="hljs-string">DLAGENTS=('file::/usr/bin/curl</span> <span class="hljs-string">-gqC</span> <span class="hljs-bullet">-</span> <span class="hljs-string">-o</span> <span class="hljs-string">%o</span> <span class="hljs-string">%u'</span>
-          <span class="hljs-string">'ftp::/usr/bin/curl -gqfC - --ftp-pasv --retry 3 --retry-delay 3 -o %o %u'</span>
-          <span class="hljs-string">'http::/usr/bin/curl -gqb "" -fLC - --retry 3 --retry-delay 3 -o %o %u'</span>
-          <span class="hljs-string">'https::/usr/bin/curl -gqb "" -fLC - --retry 3 --retry-delay 3 -o %o %u'</span>
-          <span class="hljs-string">'rsync::/usr/bin/rsync --no-motd -z %u %o'</span>
-          <span class="hljs-string">'scp::/usr/bin/scp -C %u %o'</span><span class="hljs-string">)</span>
+<span class="hljs-string">'ftp::/usr/bin/curl -gqfC - --ftp-pasv --retry 3 --retry-delay 3 -o %o %u'</span>
+<span class="hljs-string">'http::/usr/bin/curl -gqb "" -fLC - --retry 3 --retry-delay 3 -o %o %u'</span>
+<span class="hljs-string">'https::/usr/bin/curl -gqb "" -fLC - --retry 3 --retry-delay 3 -o %o %u'</span>
+<span class="hljs-string">'rsync::/usr/bin/rsync --no-motd -z %u %o'</span>
+<span class="hljs-string">'scp::/usr/bin/scp -C %u %o'</span><span class="hljs-string">)</span>
 <span class="hljs-comment"># ...</span>
 </code></pre>
 <p>为什么要用慢的要死的 <code>curl</code> 呢？为什么不用一个多线程的下载工具呢？我搜了一些大佬的博客，有换成 <code>aria2</code> 的，我选择了参数更加清爽的 <code>axel</code>。</p>
 <pre><code class="hljs language-yaml"><span class="hljs-string">DLAGENTS=('file::/usr/bin/curl</span> <span class="hljs-string">-gqC</span> <span class="hljs-bullet">-</span> <span class="hljs-string">-o</span> <span class="hljs-string">%o</span> <span class="hljs-string">%u'</span>
-          <span class="hljs-string">'ftp::/usr/bin/axel -n 15 -a -o %o %u'</span>
-          <span class="hljs-string">'http::/usr/bin/axel -n 15 -a -o %o %u'</span>
-          <span class="hljs-string">'https::/usr/bin/axel -n 15 -a -o %o %u'</span>
-          <span class="hljs-string">'rsync::/usr/bin/rsync --no-motd -z %u %o'</span>
-          <span class="hljs-string">'scp::/usr/bin/scp -C %u %o'</span><span class="hljs-string">)</span>
+<span class="hljs-string">'ftp::/usr/bin/axel -n 15 -a -o %o %u'</span>
+<span class="hljs-string">'http::/usr/bin/axel -n 15 -a -o %o %u'</span>
+<span class="hljs-string">'https::/usr/bin/axel -n 15 -a -o %o %u'</span>
+<span class="hljs-string">'rsync::/usr/bin/rsync --no-motd -z %u %o'</span>
+<span class="hljs-string">'scp::/usr/bin/scp -C %u %o'</span><span class="hljs-string">)</span>
 </code></pre>
 <p>然而，<code>github</code> 上的软件包用的是亚马逊云，在国内似乎被墙了，不管多少个线程都下不动，所以我们还需要一点特殊优化。</p>
 <p>既然能把 <code>curl</code> 换成 <code>axel</code>，那么能不能换成一个我们自己定义的脚本呢？于是我在 <code>/usr/local/bin/</code> 下面新建了一个脚本 <code>fake_axel_for_makepkg</code>：</p>
@@ -96,7 +96,7 @@ others=`<span class="hljs-built_in">echo</span> <span class="hljs-variable">$2</
     url=<span class="hljs-variable">$2</span>;
     /usr/bin/axel -n 15 -a -o <span class="hljs-variable">$1</span> <span class="hljs-variable">$url</span>;
     <span class="hljs-built_in">exit</span>
-<span class="hljs-keyword">case</span> <span class="hljs-string">"<span class="hljs-variable">$domin</span>"</span> <span class="hljs-keyword">in</span> 
+<span class="hljs-keyword">case</span> <span class="hljs-string">"<span class="hljs-variable">$domin</span>"</span> <span class="hljs-keyword">in</span>
     <span class="hljs-string">"github.com"</span>)
     url=<span class="hljs-string">"https://ghproxy.com/"</span><span class="hljs-variable">$2</span>;
     <span class="hljs-built_in">echo</span> <span class="hljs-string">"download from github mirror <span class="hljs-variable">$url</span>"</span>;
@@ -110,11 +110,11 @@ others=`<span class="hljs-built_in">echo</span> <span class="hljs-variable">$2</
 </code></pre>
 <p>然后把 <code>makepkg.conf</code> 改成：</p>
 <pre><code class="hljs language-yaml"><span class="hljs-string">DLAGENTS=('file::/usr/bin/curl</span> <span class="hljs-string">-gqC</span> <span class="hljs-bullet">-</span> <span class="hljs-string">-o</span> <span class="hljs-string">%o</span> <span class="hljs-string">%u'</span>
-          <span class="hljs-string">'ftp::/usr/bin/axel -n 15 -a -o %o %u'</span>
-          <span class="hljs-string">'http::/usr/local/bin/fake_axel_for_makepkg %o %u'</span>
-          <span class="hljs-string">'https::/usr/local/bin/fake_axel_for_makepkg %o %u'</span>
-          <span class="hljs-string">'rsync::/usr/bin/rsync --no-motd -z %u %o'</span>
-          <span class="hljs-string">'scp::/usr/bin/scp -C %u %o'</span><span class="hljs-string">)</span>
+<span class="hljs-string">'ftp::/usr/bin/axel -n 15 -a -o %o %u'</span>
+<span class="hljs-string">'http::/usr/local/bin/fake_axel_for_makepkg %o %u'</span>
+<span class="hljs-string">'https::/usr/local/bin/fake_axel_for_makepkg %o %u'</span>
+<span class="hljs-string">'rsync::/usr/bin/rsync --no-motd -z %u %o'</span>
+<span class="hljs-string">'scp::/usr/bin/scp -C %u %o'</span><span class="hljs-string">)</span>
 </code></pre>
 <p>这样下载速度就上来了。</p></div>
 </section>

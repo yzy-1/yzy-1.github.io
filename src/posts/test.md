@@ -1,9 +1,7 @@
-{
-  "title": "Test 测试博客",
-  "tags": ["test"],
-  "uptime": 1641365813006
-}
-
+---
+title: "Test 测试博客"
+tags: ["test"]
+uptime: 1641365813
 ---
 
 $$
@@ -116,40 +114,49 @@ $$
 $\large\textbf{\textsf{公告} / Announcement}$
 
 # Heading 1
+
 ## Heading 2
+
 ### Heading 3
+
 #### Heading 4
+
 ##### Heading 5
+
 ###### Heading 6
+
 # Heading 1 link [Heading link](https://github.com/pandao/editor.md "Heading link")
+
 ## Heading 2 link [Heading link](https://github.com/pandao/editor.md "Heading link")
+
 ### Heading 3 link [Heading link](https://github.com/pandao/editor.md "Heading link")
+
 #### Heading 4 link [Heading link](https://github.com/pandao/editor.md "Heading link") Heading link [Heading link](https://github.com/pandao/editor.md "Heading link")
+
 ##### Heading 5 link [Heading link](https://github.com/pandao/editor.md "Heading link")
+
 ###### Heading 6 link [Heading link](https://github.com/pandao/editor.md "Heading link")
 
 #### 标题（用底线的形式）Heading (underline)
 
-This is an H1
-=============
+# This is an H1
 
-This is an H2
--------------
+## This is an H2
 
 ### 字符效果和横线等
 
-----
+---
 
-~~删除线~~ <s>删除线（开启识别HTML标签时）</s>
-*斜体字*      _斜体字_
-**粗体**  __粗体__
-***粗斜体*** ___粗斜体___
+~~删除线~~ <s>删除线（开启识别 HTML 标签时）</s>
+_斜体字_ _斜体字_
+**粗体** **粗体**
+**_粗斜体_** **_粗斜体_**
 
 上标：X<sub>2</sub>，下标：O<sup>2</sup>
 
-**缩写(同HTML的abbr标签)**
+**缩写(同 HTML 的 abbr 标签)**
 
-> 即更长的单词或短语的缩写形式，前提是开启识别HTML标签时，已默认开启
+> 即更长的单词或短语的缩写形式，前提是开启识别 HTML 标签时，已默认开启
 
 The <abbr title="Hyper Text Markup Language">HTML</abbr> specification is maintained by the <abbr title="World Wide Web Consortium">W3C</abbr>.
 
@@ -198,48 +205,48 @@ GFM a-tail link @pandao
     | Content Cell  | Content Cell  |
     | Content Cell  | Content Cell  |
 
-#### JS代码
+#### JS 代码
 
 ```javascript
-function test(){
+function test() {
   console.log("Hello world!");
 }
 
-(function(){
-  var box = function(){
+(function () {
+  var box = function () {
     return box.fn.init();
   };
 
   box.prototype = box.fn = {
-    init : function(){
-      console.log('box.init()');
+    init: function () {
+      console.log("box.init()");
 
-    return this;
+      return this;
     },
 
-  add : function(str){
-    alert("add", str);
+    add: function (str) {
+      alert("add", str);
 
-    return this;
-  },
+      return this;
+    },
 
-  remove : function(str){
-    alert("remove", str);
+    remove: function (str) {
+      alert("remove", str);
 
-    return this;
-  }
+      return this;
+    },
   };
 
   box.fn.init.prototype = box.fn;
 
-  window.box =box;
+  window.box = box;
 })();
 
 var testBox = box();
 testBox.add("jQuery").remove("jQuery");
 ```
 
-#### HTML代码 HTML codes
+#### HTML 代码 HTML codes
 
 ```html
 <!DOCTYPE html>
@@ -264,7 +271,7 @@ Image:
 
 [![](https://cdn.luogu.com.cn/upload/pic/22071.png)](https://www.luogu.com.cn "洛谷日报")
 
-----
+---
 
 ### 列表 Lists
 
@@ -274,23 +281,23 @@ Image:
 - 列表二
 - 列表三
 
-#### 无序列表（星号）Unordered Lists (*)
+#### 无序列表（星号）Unordered Lists (\*)
 
-* 列表一
-* 列表二
-* 列表三
+- 列表一
+- 列表二
+- 列表三
 
 #### 无序列表（加号和嵌套）Unordered Lists (+)
 
-+ 列表一
-+ 列表二
-  + 列表二-1
-  + 列表二-2
-  + 列表二-3
-+ 列表三
-  * 列表一
-  * 列表二
-  * 列表三
+- 列表一
+- 列表二
+  - 列表二-1
+  - 列表二-2
+  - 列表二-3
+- 列表三
+  - 列表一
+  - 列表二
+  - 列表三
 
 #### 有序列表 Ordered Lists (-)
 
@@ -310,45 +317,44 @@ Image:
   - [ ] GFM task list 4-1
   - [ ] GFM task list 4-2
 
-----
+---
 
 ### 绘制表格 Tables
 
+| First Header | Second Header |
+| ------------ | ------------- |
+| Content Cell | Content Cell  |
+| Content Cell | Content Cell  |
 
-| First Header  | Second Header |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
-
-| Function name | Description                    |
-| ------------- | ------------------------------ |
-| `help()`      | Display the help window.       |
-| `destroy()`   | **Destroy your computer!**     |
+| Function name | Description                |
+| ------------- | -------------------------- |
+| `help()`      | Display the help window.   |
+| `destroy()`   | **Destroy your computer!** |
 
 | Left-Aligned  | Center Aligned  | Right Aligned |
-| :------------ |:---------------:| -----:|
-| col 3 is      | some wordy text | \$1600 |
-| col 2 is      | centered        |   \$12 |
-| zebra stripes | are neat        |    \$1 |
+| :------------ | :-------------: | ------------: |
+| col 3 is      | some wordy text |        \$1600 |
+| col 2 is      |    centered     |          \$12 |
+| zebra stripes |    are neat     |           \$1 |
 
-| Item      | Value |
-| --------- | -----:|
-| Computer  | $1600$ |
-| Phone     |   $12$ |
-| Pipe      |    $1$ |
+| Item     |  Value |
+| -------- | -----: |
+| Computer | $1600$ |
+| Phone    |   $12$ |
+| Pipe     |    $1$ |
 
-----
+---
 
 #### 特殊符号 HTML Entities Codes
 
-&copy; &  &uml; &trade; &iexcl; &pound;
+&copy; & &uml; &trade; &iexcl; &pound;
 &amp; &lt; &gt; &yen; &euro; &reg; &plusmn; &para; &sect; &brvbar; &macr; &laquo; &middot;
 
-X&sup2; Y&sup3; &frac34; &frac14;  &times;  &divide;   &raquo;
+X&sup2; Y&sup3; &frac34; &frac14; &times; &divide; &raquo;
 
-18&ordm;C  &quot;  &apos;
+18&ordm;C &quot; &apos;
 
-### Emoji表情 :smiley:
+### Emoji 表情 :smiley:
 
 > Blockquotes :star:
 
@@ -360,7 +366,7 @@ X&sup2; Y&sup3; &frac34; &frac14;  &times;  &divide;   &raquo;
 - [ ] []this is an incomplete item [test link](#) :fa-star: @pandao;
 - [ ] [ ]this is an incomplete item :fa-star: :fa-gear:;
   - [ ] :smiley: this is an incomplete item [test link](#) :fa-star: :fa-gear:;
-  - [ ] :smiley: this is  :fa-star: :fa-gear: an incomplete item [test link](#);
+  - [ ] :smiley: this is :fa-star: :fa-gear: an incomplete item [test link](#);
 
 #### 反斜杠 Escape
 

@@ -3,8 +3,11 @@ import "webpack-dev-server";
 import path from "path";
 import glob from "glob";
 import fs from "fs";
+import yaml from "yaml";
 import { unified } from "unified";
 import remarkParse from "remark-parse";
+import remarkFrontmatter from "remark-frontmatter";
+import remarkStringify from "remark-stringify";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import remarkRehype from "remark-rehype";
@@ -24,27 +27,39 @@ const posts: { conf?: any; md?: string; html?: string } = glob
   .sync(path.resolve(__dirname, "src/posts/*.md"))
   .map((x) => path.basename(x, ".md"))
   .reduce((posts, key) => {
-    const data = fs
+    let conf = {};
+    const md = fs
       .readFileSync(path.resolve(__dirname, "src/posts", key) + ".md", "utf8")
       .toString();
-    // 按照 --- 将 .md 分割成 json 和 markdown 两部分
-    const separator = "---\n";
-    const [rawConf, ...splittedMd] = data.split("---\n");
-    const conf = JSON.parse(rawConf);
-    const md = splittedMd.join(separator);
+    const processor = unified()
+      .use(remarkParse)
+      .use(remarkFrontmatter, ["yaml"])
+      .use(() => (tree) => {
+        if (tree.children[0]?.type === "yaml") {
+          try {
+            conf = yaml.parse(tree.children[0].value);
+          } catch (err) {
+            console.log("error on parsing yaml: " + key);
+            throw err;
+          }
+          tree.children.shift();
+        }
+      })
+      .use(remarkGfm)
+      .use(remarkMath);
+    // 生成去除头部 yaml 的 markdown
+    const description = processor().use(remarkStringify).processSync(md).toString().slice(0, 256);
     // 根据 markdown 生成 html
     // 使用 KaTeX 渲染数学公式
-    const html = unified()
-      .use(remarkParse)
-      .use(remarkGfm)
-      .use(remarkMath)
+    const html = processor()
       .use(remarkRehype, { allowDangerousHtml: true })
       .use(rehypeRaw)
       .use(rehypeHighlight)
       .use(rehypeKatex, { trust: true, strict: "ignore" })
       .use(rehypeStringify, { closeSelfClosing: true })
-      .processSync(md);
-    posts[key] = { conf: conf, md: md, html: html };
+      .processSync(md)
+      .toString();
+    posts[key] = { conf: conf, md: md, html: html, description: description };
     return posts;
   }, {});
 
